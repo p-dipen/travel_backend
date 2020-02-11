@@ -487,7 +487,7 @@ const StateController = () => {
         }
         const hotelsalepr = await syncApi().callApi('hotelsalepr', stamp, currentStampdata, tokenUsed);
         hotelsaleprSchema = [];
-        // console.log(hotelsalepr);
+        console.log(hotelsalepr.hprice.length);
         if (hotelsalepr.hprice) {
           hotelsalepr.hprice.forEach((element) => {
             element.$.inc = parseInt(element.$.inc, 10);
