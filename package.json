@@ -12,15 +12,10 @@
     "url": "https://github.com/aichbauer/express-rest-api-boilerplate/issues"
   },
   "scripts": {
-    "prestart": "npm run drop-sqlite-db || true",
     "start": "npm run nodemon",
-    "poststart": "npm run create-sqlite-db",
     "dev": "cross-env NODE_ENV=development node ./api/api.js",
     "nodemon": "nodemon --exec npm run dev",
-    "create-sqlite-db": "shx touch ./db/database.sqlite",
-    "drop-sqlite-db": "shx rm ./db/database.sqlite",
     "lint": "eslint ./api/. ./config/. ./test/.",
-    "prepush": "npm test",
     "pretest": "npm run lint",
     "production": "cross-env NODE_ENV=production node ./api/api.js",
     "test": "npm run create-sqlite-db; cross-env NODE_ENV=testing jest --coverage; npm run drop-sqlite-db",
@@ -36,16 +31,27 @@
     ]
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.0",
+    "@types/node": "^13.5.0",
+    "aes-js": "^3.1.2",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
     "core-js": "^2.6.9",
     "cors": "^2.8.4",
+    "crypto-js": "^3.1.9-1",
     "express": "^4.16.3",
     "express-routes-mapper": "^1.0.2",
     "helmet": "^3.12.0",
     "jsonwebtoken": "^8.2.1",
-    "sequelize": "^6.0.0",
-    "sqlite3": "^4.0.0"
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
+    "pg": "^7.17.1",
+    "pg-hstore": "^2.3.3",
+    "qs": "^6.9.1",
+    "sequelize": "^5.21.3",
+    "sqlite3": "^4.0.0",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "cross-env": "^5.1.4",
