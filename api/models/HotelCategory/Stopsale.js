@@ -31,7 +31,7 @@ const Stopsale = sequelize.define('Stopsale', {
   datebeg: {
     type: Sequelize.DATE,
   },
-  dateeng: {
+  dateend: {
     type: Sequelize.DATE,
   },
   hotelid: {
@@ -71,7 +71,7 @@ const Stopsale = sequelize.define('Stopsale', {
   rqdatebeg: {
     type: Sequelize.DATE,
   },
-  rqdateeng: {
+  rqdateend: {
     type: Sequelize.DATE,
   },
   note: {

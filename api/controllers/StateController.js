@@ -349,7 +349,7 @@ const StateController = () => {
             element.$.checkin = Boolean(element.$.checkin) || null;
             stopsaleSchema.push(element.$);
           });
-          await Stopsale.bulkCreate(stopsaleSchema, { updateOnDuplicate: ['htplaceid', 'hotelid', 'dateeng', 'datebeg', 'stamp', 'status', 'note', 'rqdateeng', 'rqdatebeg', 'issue', 'checkin', 'mealid', 'roomid'] }).then(() => {
+          await Stopsale.bulkCreate(stopsaleSchema, { updateOnDuplicate: ['htplaceid', 'hotelid', 'dateend', 'datebeg', 'stamp', 'status', 'note', 'rqdateend', 'rqdatebeg', 'issue', 'checkin', 'mealid', 'roomid'] }).then(() => {
             console.log('Stopsale successfully');
           });
         }
@@ -478,6 +478,8 @@ const StateController = () => {
         }
       } while (currencySchema.length >= 500);
       // hotelsalepr
+      if(false) {
+
       let hotelsaleprSchema = [];
       do {
         stamp = '';
@@ -531,6 +533,7 @@ const StateController = () => {
           });
         }
       } while (hotelsaleprSchema.length >= 500);
+    }
       // servicesalepr
       let servicesaleprSchema = [];
       do {
