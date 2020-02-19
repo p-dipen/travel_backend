@@ -478,7 +478,7 @@ const StateController = () => {
         }
       } while (currencySchema.length >= 500);
       // hotelsalepr
-      if(false) {
+      // if(false) {
 
       let hotelsaleprSchema = [];
       do {
@@ -489,7 +489,7 @@ const StateController = () => {
         }
         const hotelsalepr = await syncApi().callApi('hotelsalepr', stamp, currentStampdata, tokenUsed);
         hotelsaleprSchema = [];
-        console.log(hotelsalepr.hprice.length);
+        console.log(hotelsalepr.hprice);
         if (hotelsalepr.hprice) {
           hotelsalepr.hprice.forEach((element) => {
             element.$.inc = parseInt(element.$.inc, 10);
@@ -533,7 +533,7 @@ const StateController = () => {
           });
         }
       } while (hotelsaleprSchema.length >= 500);
-    }
+      // }
       // servicesalepr
       let servicesaleprSchema = [];
       do {
