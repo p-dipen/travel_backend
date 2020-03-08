@@ -11,6 +11,7 @@ const parse = new xml2js.Parser();
 
 const ApiUrl = 'http://segatours.toursupport.ru/xmlgate/export/default.php?samo_action=reference&form=http://samo.travel';
 const ApiUrl2 = 'http://segatours.toursupport.ru/xmlgate/export/default.php?samo_action=reference&form=http://samo.ru';
+const DOTAURL = 'http://xmldev.dotwconnect.com/gatewayV4.dotw';
 const syncApi = () => {
   const callApi = async (type, laststamp, delstamp, token) => {
     let resdata = '';
@@ -24,6 +25,22 @@ const syncApi = () => {
       parse.parseString(response, (err, data) => {
         if (err) console.log(err);
         resdata = data.Response.Data[0];
+      });
+    } catch (err) {
+      console.log('error----', err);
+    }
+    return resdata;
+  };
+  const callApiXml = async (body) => {
+    let resdata = '';
+    try {
+      let api = DOTAURL 
+      console.log(api);
+      const response = await fetch(api, { method: 'POST', body: body, headers: { 'Content-Type': 'text/xml;' } }).then((res) => res.text());
+      parse.parseString(response, (err, data) => {
+        if (err) console.log(err);
+        console.log(data)
+        resdata = data.result;
       });
     } catch (err) {
       console.log('error----', err);
@@ -59,6 +76,7 @@ const syncApi = () => {
     callApi,
     currentTimeStamp,
     commoncall,
+    callApiXml
   };
 };
 
