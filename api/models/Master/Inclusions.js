@@ -13,12 +13,18 @@ const Inclusions = sequelize.define('Inclusions', {
     autoIncrement: true,
   },
   name: {
-      type: Sequelize.STRING,
-      allowNull: false
+    type: Sequelize.STRING,
+    allowNull: false
   },
   description: {
-      type: Sequelize.STRING,
+    type: Sequelize.STRING,
   },
+  isDeleted: {
+    type: Sequelize.BOOLEAN,
+  },
+  deletedAt: {
+    type: Sequelize.DATE,
+  }
 }, { hooks, tableName });
 
 module.exports = Inclusions;

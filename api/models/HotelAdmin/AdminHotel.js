@@ -62,6 +62,12 @@ const AdminHotel = sequelize.define('AdminHotel', {
     },
     images: {
         type: Sequelize.STRING,
+    },
+    isDeleted: {
+      type: Sequelize.BOOLEAN,
+    },
+    deletedAt: {
+      type: Sequelize.DATE,
     }
 }, { hooks, tableName });
 

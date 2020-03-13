@@ -36,7 +36,8 @@ const ResponseApi = () => {
       };
     } catch (error) {
       return res.status(500).json({
-        msg: 'Internal server erroror',
+        code: 5000,
+        message: 'Internal server error',
         erroror: error,
       });
     }
