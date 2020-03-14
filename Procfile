@@ -1,1 +1,1 @@
-web: node api/api.js NODE_ENV=testing 
+web: npm run testing 

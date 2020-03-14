@@ -14,6 +14,7 @@
   "scripts": {
     "start": "npm run nodemon",
     "dev": "cross-env NODE_ENV=development node ./api/api.js",
+    "testing": "cross-env NODE_ENV=testing node ./api/api.js",
     "nodemon": "nodemon --exec npm run dev",
     "lint": "eslint ./api/. ./config/. ./test/.",
     "pretest": "npm run lint",
