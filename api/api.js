@@ -7,6 +7,8 @@ const helmet = require('helmet');
 const http = require('http');
 const mapRoutes = require('express-routes-mapper');
 const cors = require('cors');
+const path = require('path'); 
+
 
 /**
  * server configuration
@@ -22,6 +24,9 @@ const environment = process.env.NODE_ENV;
  * express application
  */
 const app = express();
+
+
+
 const server = http.Server(app);
 const mappedOpenRoutes = mapRoutes(config.publicRoutes, 'api/controllers/');
 const mappedAuthRoutes = mapRoutes(config.privateRoutes, 'api/controllers/');
@@ -48,6 +53,9 @@ app.all('/private/*', (req, res, next) => auth(req, res, next));
 // fill routes for express application
 app.use('/public', mappedOpenRoutes);
 app.use('/private', mappedAuthRoutes);
+app.use('/swagger', express.static(path.join(__dirname, '../swagger')))
+
+console.log(path.join(__dirname, '../swagger'));
 
 server.listen(config.port, () => {
   if (environment !== 'production' &&

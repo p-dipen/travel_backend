@@ -46,6 +46,11 @@ const publicRoutes = {
   'POST /service/save': 'ServicesApi.create',
   'PUT /service/save/:id': 'ServicesApi.update',
   'DELETE /service/delete/:id': 'ServicesApi.destroy',
+
+  'GET /admin-hotel/get': 'AdminHotelApi.get',
+  'POST /admin-hotel/save': 'AdminHotelApi.create',
+  'PUT /admin-hotel/save/:id': 'AdminHotelApi.update',
+  'DELETE /admin-hotel/delete/:id': 'AdminHotelApi.destroy',
 };
 
 module.exports = publicRoutes;

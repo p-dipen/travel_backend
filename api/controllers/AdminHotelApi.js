@@ -74,7 +74,7 @@ const AdminHotelApi = () => {
         try {
             let response = await crudService.get(AdminHotelModel, {
                 where: { isDeleted: false },
-                attributes: ['id', 'name', 'description'],
+                attributes: ['id', 'name'],
                 distinct: true,
             });
             return res.status(200).json({
