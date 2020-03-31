@@ -3,8 +3,9 @@ const Hotel = require('../models/HotelCategory/Hotel');
 const Meal = require('../models/HotelCategory/Meal');
 const State = require('../models/State');
 const Town = require('../models/Town');
-const CitiesServer = require('../models/Dota/getserveringcities');;
-const CountriesServer = require('../models/Dota/getserveringcounties');;
+const CitiesServer = require('../models/Dota/getserveringcities');
+const CountriesServer = require('../models/Dota/getserveringcounties');
+const Rating = require('../models/Dota/gethotelclassificationids');
 const sequelize = require('../../config/database');
 const syncApi = require('../services/sync.service');
 const Joi = require('@hapi/joi');
@@ -199,7 +200,15 @@ const searchHotelDota = async (request) => {
 </customer>`
     let data = await syncApi().callApiXml(requestBody)
     let hotelarray = [];
-    console.log(data)
+    let rating = new Map(); 
+    let datarating = await Rating.findAll({
+      attributes: ['code', 'name'],
+      raw:true
+    })
+    for (let i=0;i< datarating.length;i++) {
+      let element = datarating[i]
+      rating.set(element.code,element.name);
+    };
     data.hotels[0].hotel.forEach(element => {
       let hoteljson = {
         address: '',
@@ -211,7 +220,7 @@ const searchHotelDota = async (request) => {
       hoteljson.id = element.$.hotelid
       hoteljson.address = element.address[0]
       hoteljson.hotelname = element.hotelName[0]
-      hoteljson.rating = element.rating[0]
+      hoteljson.rating = rating.get(element.rating[0])
       hoteljson.location = element.location[0]
       hotelarray.push(hoteljson)
     })

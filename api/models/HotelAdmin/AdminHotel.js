@@ -57,6 +57,12 @@ const AdminHotel = sequelize.define('AdminHotel', {
     communication_address: {
         type: Sequelize.BOOLEAN,
     },
+    labels: {
+        type: Sequelize.STRING,
+    },
+    images: {
+        type: Sequelize.STRING,
+    }
 }, { hooks, tableName });
 
 module.exports = AdminHotel;

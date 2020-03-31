@@ -4,16 +4,16 @@ const Countries = require('../models/Dota/getcounties');
 const CountriesServer = require('../models/Dota/getserveringcounties');
 const CitiesServer = require('../models/Dota/getserveringcities');
 const Currency = require('../models/Dota/getcurrency');
-
+const Rating = require('../models/Dota/gethotelclassificationids');
 const DOTAControl = () => {
     const migratedb = async (req, res) => {
-        migrate = req.body.migrate || 'getallcities,getallcountries,getservingcountries,getservingcities,getcurrenciesids';
+        migrate = req.body.migrate || 'getallcities,getallcountries,getservingcountries,getservingcities,getcurrenciesids,gethotelclassificationids';
         migrat = migrate.split(",");
         console.log(migrat);
         response = "";
         for (let i = 0; i < migrat.length; i++) {
             let body = '';
-            if (migrat[i] == "getallcities" || migrat[i] == "getallcountries" || migrat[i] == "getservingcountries" || migrat[i]=="getcurrenciesids") {
+            if (migrat[i] == "getallcities" || migrat[i] == "getallcountries" || migrat[i] == "getservingcountries" || migrat[i]=="getcurrenciesids" || migrat[i] == "gethotelclassificationids") {
                 body = `<customer>
                 <username>XML Praivit</username>
                 <password>9b3c209e73f7c01c83dbb6f4203ec2ff</password>
@@ -226,6 +226,31 @@ const DOTAControl = () => {
                                 console.log(err)
                             })
                             console.log("data", currenices.length);
+                        }
+                    }
+                    break;
+                    case "gethotelclassificationids":
+                    let rating = response.classification[0].option
+                    console.log(rating);
+                    ratines = [];
+                    if (rating) {
+                        for (let i=0;i<rating.length;i++) {
+                            element = rating[i]
+                            let tmprating = {
+                                name:null,
+                                code:null,
+                            }
+                            tmprating.name = element._
+                            tmprating.code = element.$.value
+                            ratines.push(tmprating);
+                        };
+                        if (ratines.length > 0 ) {
+                            await Rating.bulkCreate(ratines).then((result) => {
+                                console.log('ratines');
+                            }).catch((err) => {
+                                console.log(err)
+                            })
+                            console.log("data", ratines.length);
                         }
                     }
                     break;
