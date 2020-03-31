@@ -19,6 +19,12 @@ const PolicyType = sequelize.define('PolicyType', {
   description: {
       type: Sequelize.STRING,
   },
+  isDeleted: {
+    type: Sequelize.BOOLEAN,
+  },
+  deletedAt: {
+    type: Sequelize.DATE,
+  }
 }, { hooks, tableName });
 
 module.exports = PolicyType;

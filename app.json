@@ -1,0 +1,12 @@
+{
+    "env":{
+        "NODE_ENV":"testing"
+    },
+    "environments": {
+        "test": {
+          "env": {
+            "NODE_ENV":"testing"
+          }
+        }
+      }
+}

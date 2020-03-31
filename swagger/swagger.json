@@ -1,0 +1,1886 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "Travel ERP Swagger",
+    "contact": {
+      "email": "ravishah207539@gmail.com"
+    }
+  },
+  "host": "localhost:2019",
+  "basePath": "/public",
+  "tags": [
+    {
+      "name": "Bedding Type",
+      "description": "CRUD of Bedding Type"
+    },
+    {
+      "name": "Inclusions",
+      "description": "CRUD of Inclusions"
+    },
+    {
+      "name": "Meal Type",
+      "description": "CRUD of Meal Type"
+    },
+    {
+      "name": "Policy Type",
+      "description": "CRUD of Policy Type"
+    },
+    {
+      "name": "Promotion Type",
+      "description": "CRUD of Promotion Type"
+    },
+    {
+      "name": "Property Facilities",
+      "description": "CRUD of Property Facilities"
+    },
+    {
+      "name": "Room Facilities",
+      "description": "CRUD of Room Facilities"
+    },
+    {
+      "name": "Service",
+      "description": "CRUD of Service"
+    },
+    {
+      "name": "Room Type",
+      "description": "CRUD of Room Type"
+    },
+    {
+      "name": "Admin Hotel",
+      "description": "CRUD of Admin Hotel"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/bedding-type/get": {
+      "get": {
+        "tags": [
+          "Bedding Type"
+        ],
+        "summary": "Get all bedding type",
+        "description": "",
+        "operationId": "getBeddingType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/bedding-type/save": {
+      "post": {
+        "tags": [
+          "Bedding Type"
+        ],
+        "summary": "Add a new bedding type",
+        "description": "",
+        "operationId": "addBeddingType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Bedding_Type",
+            "description": "Bedding type object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Bedding-Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/bedding-type/save/{id}": {
+      "put": {
+        "tags": [
+          "Bedding Type"
+        ],
+        "summary": "Update Bedding type based on ID",
+        "description": "",
+        "operationId": "updateBeddingType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the bedding type to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Bedding_Type",
+            "description": "Bedding type object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Bedding-Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/bedding-type/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Bedding Type"
+        ],
+        "summary": "Delete an existing bedding type based on Id",
+        "description": "",
+        "operationId": "deleteBeddingType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/inclusions/get": {
+      "get": {
+        "tags": [
+          "Inclusions"
+        ],
+        "summary": "Get all inclusions",
+        "description": "",
+        "operationId": "getInclusions",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/inclusions/save": {
+      "post": {
+        "tags": [
+          "Inclusions"
+        ],
+        "summary": "Add a new inclusions",
+        "description": "",
+        "operationId": "addInclusions",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Inclusions",
+            "description": "Inclusions object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Inclusions"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/inclusions/save/{id}": {
+      "put": {
+        "tags": [
+          "Inclusions"
+        ],
+        "summary": "Update Inclusions based on ID",
+        "description": "",
+        "operationId": "updateInclusions",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the inclusions to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Inclusions",
+            "description": "Inclusions object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Inclusions"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/inclusions/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Inclusions"
+        ],
+        "summary": "Delete an existing inclusions based on Id",
+        "description": "",
+        "operationId": "deleteInclusions",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/meal-type/get": {
+      "get": {
+        "tags": [
+          "Meal Type"
+        ],
+        "summary": "Get all meal type",
+        "description": "",
+        "operationId": "getMealType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/meal-type/save": {
+      "post": {
+        "tags": [
+          "Meal Type"
+        ],
+        "summary": "Add a new meal type",
+        "description": "",
+        "operationId": "addMealType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Meal_Type",
+            "description": "Meal type object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Meal-Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/meal-type/save/{id}": {
+      "put": {
+        "tags": [
+          "Meal Type"
+        ],
+        "summary": "Update Meal type based on ID",
+        "description": "",
+        "operationId": "updateMealType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the meal type to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Meal_Type",
+            "description": "Meal type object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Meal-Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/meal-type/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Meal Type"
+        ],
+        "summary": "Delete an existing meal type based on Id",
+        "description": "",
+        "operationId": "deleteMealType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/policy-type/get": {
+      "get": {
+        "tags": [
+          "Policy Type"
+        ],
+        "summary": "Get all policy type",
+        "description": "",
+        "operationId": "getPolicyType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/policy-type/save": {
+      "post": {
+        "tags": [
+          "Policy Type"
+        ],
+        "summary": "Add a new policy type",
+        "description": "",
+        "operationId": "addPolicyType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Policy_Type",
+            "description": "Policy type object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Policy-Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/policy-type/save/{id}": {
+      "put": {
+        "tags": [
+          "Policy Type"
+        ],
+        "summary": "Update Policy type based on ID",
+        "description": "",
+        "operationId": "updatePolicyType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the policy type to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Policy_Type",
+            "description": "Policy type object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Policy-Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/policy-type/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Policy Type"
+        ],
+        "summary": "Delete an existing policy type based on Id",
+        "description": "",
+        "operationId": "deletePolicyType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/promotion-type/get": {
+      "get": {
+        "tags": [
+          "Promotion Type"
+        ],
+        "summary": "Get all promotion type",
+        "description": "",
+        "operationId": "getPromotionType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/promotion-type/save": {
+      "post": {
+        "tags": [
+          "Promotion Type"
+        ],
+        "summary": "Add a new promotion type",
+        "description": "",
+        "operationId": "addPromotionType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Promotion_Type",
+            "description": "Promotion type object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Promotion-Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/promotion-type/save/{id}": {
+      "put": {
+        "tags": [
+          "Promotion Type"
+        ],
+        "summary": "Update Promotion type based on ID",
+        "description": "",
+        "operationId": "updatePromotionType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the promotion type to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Promotion_Type",
+            "description": "Promotion type object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Promotion-Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/promotion-type/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Promotion Type"
+        ],
+        "summary": "Delete an existing promotion type based on Id",
+        "description": "",
+        "operationId": "deletePromotionType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/room-type/get": {
+      "get": {
+        "tags": [
+          "Room Type"
+        ],
+        "summary": "Get all room type",
+        "description": "",
+        "operationId": "getRoomType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/room-type/save": {
+      "post": {
+        "tags": [
+          "Room Type"
+        ],
+        "summary": "Add a new room type",
+        "description": "",
+        "operationId": "addRoomType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Room_Type",
+            "description": "Room type object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Room-Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/room-type/save/{id}": {
+      "put": {
+        "tags": [
+          "Room Type"
+        ],
+        "summary": "Update Room type based on ID",
+        "description": "",
+        "operationId": "updateRoomType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the room type to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Room_Type",
+            "description": "Room type object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Room-Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/room-type/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Room Type"
+        ],
+        "summary": "Delete an existing room type based on Id",
+        "description": "",
+        "operationId": "deleteRoomType",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/service/get": {
+      "get": {
+        "tags": [
+          "Service"
+        ],
+        "summary": "Get all service",
+        "description": "",
+        "operationId": "getService",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/service/save": {
+      "post": {
+        "tags": [
+          "Service"
+        ],
+        "summary": "Add a new service",
+        "description": "",
+        "operationId": "addService",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Service",
+            "description": "Service object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Service"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/service/save/{id}": {
+      "put": {
+        "tags": [
+          "Service"
+        ],
+        "summary": "Update Service based on ID",
+        "description": "",
+        "operationId": "updateService",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the service to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Service",
+            "description": "Service object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Service"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/service/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Service"
+        ],
+        "summary": "Delete an existing service based on Id",
+        "description": "",
+        "operationId": "deleteService",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/room-facilities/get": {
+      "get": {
+        "tags": [
+          "Room Facilities"
+        ],
+        "summary": "Get all room-facilities",
+        "description": "",
+        "operationId": "getRoomFacilities",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/room-facilities/save": {
+      "post": {
+        "tags": [
+          "Room Facilities"
+        ],
+        "summary": "Add a new room-facilities",
+        "description": "",
+        "operationId": "addRoomFacilities",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Room Facilities",
+            "description": "Room Facilities object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Room-Facilities"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/room-facilities/save/{id}": {
+      "put": {
+        "tags": [
+          "Room Facilities"
+        ],
+        "summary": "Update Room Facilities based on ID",
+        "description": "",
+        "operationId": "updateRoomFacilities",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the room-facilities to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Room Facilities",
+            "description": "Room Facilities object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Room-Facilities"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/room-facilities/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Room Facilities"
+        ],
+        "summary": "Delete an existing room-facilities based on Id",
+        "description": "",
+        "operationId": "deleteRoomFacilities",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/property-facilities/get": {
+      "get": {
+        "tags": [
+          "Property Facilities"
+        ],
+        "summary": "Get all property-facilities",
+        "description": "",
+        "operationId": "getPropertyFacilities",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/property-facilities/save": {
+      "post": {
+        "tags": [
+          "Property Facilities"
+        ],
+        "summary": "Add a new property-facilities",
+        "description": "",
+        "operationId": "addPropertyFacilities",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Property Facilities",
+            "description": "Property Facilities object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Property-Facilities"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/property-facilities/save/{id}": {
+      "put": {
+        "tags": [
+          "Property Facilities"
+        ],
+        "summary": "Update Property Facilities based on ID",
+        "description": "",
+        "operationId": "updatePropertyFacilities",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the property-facilities to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Property Facilities",
+            "description": "Property Facilities object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Property-Facilities"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/property-facilities/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Property Facilities"
+        ],
+        "summary": "Delete an existing property-facilities based on Id",
+        "description": "",
+        "operationId": "deletePropertyFacilities",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin-hotel/get": {
+      "get": {
+        "tags": [
+          "Admin Hotel"
+        ],
+        "summary": "Get all admin hotel",
+        "description": "",
+        "operationId": "getAdminHotel",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin-hotel/save": {
+      "post": {
+        "tags": [
+          "Admin Hotel"
+        ],
+        "summary": "Add a new admin hotel",
+        "description": "",
+        "operationId": "addAdminHotel",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Admin Hotel",
+            "description": "Admin Hotel object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Admin-Hotel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin-hotel/save/{id}": {
+      "put": {
+        "tags": [
+          "Admin Hotel"
+        ],
+        "summary": "Update Admin Hotel based on ID",
+        "description": "",
+        "operationId": "updateAdminHotel",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the admin hotel to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Admin Hotel",
+            "description": "Admin Hotel object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Admin-Hotel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin-hotel/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Admin Hotel"
+        ],
+        "summary": "Delete an existing admin hotel based on Id",
+        "description": "",
+        "operationId": "deleteAdminHotel",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Bedding-Type": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Inclusions": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Meal-Type": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Policy-Type": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Promotion-Type": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Room-Type": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Service": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Room-Facilities": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Property-Facilities": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Admin-Hotel": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "member_name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "province": {
+          "type": "string"
+        },
+        "pincode": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "telephone_num": {
+          "type": "string"
+        },
+        "contact_num": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "contact_person_name": {
+          "type": "string"
+        },
+        "website_link": {
+          "type": "string"
+        },
+        "communication_address": {
+          "type": "boolean"
+        },
+        "labels": {
+          "type": "string"
+        },
+        "images": {
+          "type": "string"
+        }
+      }
+    },
+    "Success-Response": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "enum": [
+            2000,
+            4000
+          ]
+        },
+        "success": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "description": "You will get the related api datas"
+        }
+      }
+    },
+    "Error-Response": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "enum": [
+            5000
+          ]
+        },
+        "success": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "description": "You will get the related api datas"
+        }
+      }
+    }
+  }
+}
