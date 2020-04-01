@@ -1,49 +1,69 @@
 const InclusionsModel = require('../models/Master/Inclusions');
 const crudService = require('../services/crud.service');
+const { InclusionsSchemas } = require('../schemas/Master');
 
 const InclusionsApi = () => {
 
-    const create = async (req, res) => {
-        try {
-            let response = await crudService.insert(InclusionsModel, req.body);
-            return res.status(200).json({
-                code: 2000,
-                success: true,
-                message: `${response.name} inclusions created successfully.`,
-                data: {}
-            });
-        } catch (error) {
-            return res.status(500).json({
-                code: 5000,
-                message: 'Internal server error',
-                error: error,
-            });
-        }
-    };
-
-    const update = async (req, res) => {
-        try {
-            if (req.params.id) {
-                let response = await crudService.update(InclusionsModel, { id: req.params.id }, req.body);
+    const create = (req, res) => {
+        crudService.validate(req.body, InclusionsSchemas.save).then(async (reqData) => {
+            try {
+                let response = await crudService.insert(InclusionsModel, reqData);
                 return res.status(200).json({
                     code: 2000,
                     success: true,
-                    message: `${response} Record(s) of inclusions updated successfully.`,
-                    data: {}
+                    message: `${response.name} inclusions created successfully.`,
+                    data: response || {}
                 });
-            } else {
-                return res.status(200).json({
-                    code: 4000,
-                    success: false,
-                    message: `Incomplete Data`,
-                    data: {}
+            } catch (error) {
+                return res.status(500).json({
+                    code: 5000,
+                    message: 'Internal server error',
+                    error: error,
                 });
             }
-        } catch (error) {
-            return res.status(500).json({
-                code: 5000,
-                message: 'Internal server error',
-                error: error,
+        }).catch(err => {
+            return res.status(200).json({
+                code: 4002,
+                success: false,
+                message: 'Validation Failed',
+                error: err,
+            });
+        });
+    };
+
+    const update = (req, res) => {
+        if (req.params.id) {
+            crudService.validate(req.body, InclusionsSchemas.save).then(async (reqData) => {
+                try {
+                    let response = await crudService.update(InclusionsModel, { id: req.params.id }, reqData);
+                    reqData.id = req.params.id;
+                    return res.status(200).json({
+                        code: 2000,
+                        success: true,
+                        message: `${response} Record(s) of inclusions updated successfully.`,
+                        data: reqData || {}
+                    });
+                } catch (error) {
+                    return res.status(500).json({
+                        code: 5000,
+                        message: 'Internal server error',
+                        error: error,
+                    });
+                }
+            }).catch(err => {
+                return res.status(200).json({
+                    code: 4002,
+                    success: false,
+                    message: 'Validation Failed',
+                    error: err,
+                });
+            });
+        } else {
+            return res.status(200).json({
+                code: 4000,
+                success: false,
+                message: `Invalid Url Parameters`,
+                data: {}
             });
         }
     };
@@ -59,7 +79,12 @@ const InclusionsApi = () => {
                     data: {}
                 });
             } else {
-                return res.status(200).json({ success: false, data: 'Incomplete data' });
+                return res.status(200).json({
+                    code: 4000,
+                    success: false,
+                    message: `Invalid Url Parameters`,
+                    data: {}
+                });
             }
         } catch (error) {
             return res.status(500).json({

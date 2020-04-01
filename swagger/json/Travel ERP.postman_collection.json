@@ -12,7 +12,8 @@
 				"7d7f0037-112b-ec55-892a-28ba9a0e5a67",
 				"e37fc357-0bf5-0041-c196-491fbf96f38e",
 				"42fcc0e2-b8db-f3f4-ee94-e3d67124faaa",
-				"2e65847b-dcd2-177d-d5a2-0eadd418c982"
+				"2e65847b-dcd2-177d-d5a2-0eadd418c982",
+				"d29e73e1-feaa-efbd-6110-89adb3d6b6c6"
 			],
 			"owner": 0,
 			"folders_order": [],
@@ -443,7 +444,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:2019/public/admin-hotel/delete/1",
+			"url": "http://localhost:2019/public/admin-hotel/property/delete/11",
 			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -456,7 +457,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1584280230038,
+			"time": 1585732561104,
 			"name": "Delete",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
@@ -590,7 +591,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:2019/public/admin-hotel/save/1",
+			"url": "http://localhost:2019/public/admin-hotel/property/save/11",
 			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -603,12 +604,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1584280387379,
+			"time": 1585732340031,
 			"name": "Update",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
 			"responses": [],
-			"rawModeData": "{\r\n  \"name\": \"Hotel Admin\",\r\n  \"member_name\": \"Member\",\r\n  \"address\": \"Address Line\",\r\n  \"country\": \"Country\",\r\n  \"city\": \"City\",\r\n  \"province\": \"123456\",\r\n  \"pincode\": \"380001\",\r\n  \"timezone\": \"+5:30\",\r\n  \"telephone_num\": \"+919409656872\",\r\n  \"contact_num\": \"+919409656872\",\r\n  \"email\": \"ravishah207539@gmail.com\",\r\n  \"contact_person_name\": \"Ravi Shah\",\r\n  \"website_link\": \"http://www.google.com\",\r\n  \"communication_address\": true,\r\n  \"labels\": \"Label\",\r\n  \"images\": \"Base64\"\r\n}"
+			"rawModeData": "{\n  \"name\": \"Hotel Admin1\",\n  \"member_name\": \"Member1\",\n  \"addressLine1\": \"Address Line\",\n  \"addressLine2\": \"Address Line\",\n  \"country\": \"Country\",\n  \"city\": \"City\",\n  \"province\": \"123456\",\n  \"pincode\": \"380001\",\n  \"timezone\": \"+5:30\",\n  \"telephone_num\": \"+919409656872\",\n  \"contact_num\": \"+919409656872\",\n  \"email\": \"ravishah207539@gmail.com\",\n  \"contact_person_name\": \"Ravi Shah\",\n  \"website_link\": \"http://www.google.com\",\n  \"communication_address\": true,\n  \"contactDetail\": [\n    {\n      \"id\": \"16\",\n      \"firstname\": \"RaviShah\",\n      \"lastname\": \"RaviShah\"\n    },\n    {\n      \"id\": \"17\",\n      \"firstname\": \"RaviShah1\",\n      \"lastname\": \"RaviShah1\"\n    },\n    {\n      \"id\": \"23\",\n      \"firstname\": \"abc11\",\n      \"lastname\": \"xyz11\"\n    },\n    {\n      \"firstname\": \"abc\",\n      \"lastname\": \"xyz\"\n    }\n  ]\n}"
 		},
 		{
 			"id": "4b179327-f345-7b05-adf8-39872900d590",
@@ -902,7 +903,7 @@
 			"id": "7d7f0037-112b-ec55-892a-28ba9a0e5a67",
 			"headers": "",
 			"headerData": [],
-			"url": "http://localhost:2019/public/admin-hotel/get",
+			"url": "http://localhost:2019/public/admin-hotel/property/get",
 			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -915,7 +916,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1584280169555,
+			"time": 1585733530608,
 			"name": "Get",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
@@ -1239,6 +1240,29 @@
 			"rawModeData": "{}"
 		},
 		{
+			"id": "d29e73e1-feaa-efbd-6110-89adb3d6b6c6",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:2019/public/admin-hotel/property/get/10",
+			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1585733956915,
+			"name": "Get By hotel Id",
+			"description": "",
+			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
+			"responses": []
+		},
+		{
 			"id": "dae6b27d-126a-11a3-4eb8-e60820b91ab2",
 			"headers": "",
 			"headerData": [],
@@ -1272,7 +1296,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:2019/public/admin-hotel/save",
+			"url": "http://localhost:2019/public/admin-hotel/property/save",
 			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -1285,12 +1309,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1584280376009,
+			"time": 1585731385187,
 			"name": "Add",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
 			"responses": [],
-			"rawModeData": "{\r\n  \"name\": \"Hotel Admin\",\r\n  \"member_name\": \"Member\",\r\n  \"address\": \"Address Line\",\r\n  \"country\": \"Country\",\r\n  \"city\": \"City\",\r\n  \"province\": \"123456\",\r\n  \"pincode\": \"380001\",\r\n  \"timezone\": \"+5:30\",\r\n  \"telephone_num\": \"+919409656872\",\r\n  \"contact_num\": \"+919409656872\",\r\n  \"email\": \"ravishah207539@gmail.com\",\r\n  \"contact_person_name\": \"Ravi Shah\",\r\n  \"website_link\": \"http://www.google.com\",\r\n  \"communication_address\": true,\r\n  \"labels\": \"Label\",\r\n  \"images\": \"Base64\"\r\n}"
+			"rawModeData": "{\r\n  \"name\": \"Hotel Admin\",\r\n  \"member_name\": \"Member\",\r\n  \"addressLine1\": \"Address Line\",\r\n    \"addressLine2\": \"Address Line\",\r\n  \"country\": \"Country\",\r\n  \"city\": \"City\",\r\n  \"province\": \"123456\",\r\n  \"pincode\": \"380001\",\r\n  \"timezone\": \"+5:30\",\r\n  \"telephone_num\": \"+919409656872\",\r\n  \"contact_num\": \"+919409656872\",\r\n  \"email\": \"ravishah207539@gmail.com\",\r\n  \"contact_person_name\": \"Ravi Shah\",\r\n  \"website_link\": \"http://www.google.com\",\r\n  \"communication_address\": true,\r\n  \"contactDetail\":[{\"firstname\":\"Ravi\", \"lastname\":\"Shah\"},{\"firstname\":\"Ravi1\", \"lastname\":\"Shah1\"}]\r\n}"
 		},
 		{
 			"id": "f50eeaa9-321c-1474-5627-ddb40b376635",

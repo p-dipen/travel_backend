@@ -47,10 +47,11 @@ const publicRoutes = {
   'PUT /service/save/:id': 'ServicesApi.update',
   'DELETE /service/delete/:id': 'ServicesApi.destroy',
 
-  'GET /admin-hotel/get': 'AdminHotelApi.get',
-  'POST /admin-hotel/save': 'AdminHotelApi.create',
-  'PUT /admin-hotel/save/:id': 'AdminHotelApi.update',
-  'DELETE /admin-hotel/delete/:id': 'AdminHotelApi.destroy',
+  'GET /admin-hotel/property/get': 'AdminHotelApi.getProperty',
+  'GET /admin-hotel/property/get/:hotelId': 'AdminHotelApi.getPropertyById',
+  'POST /admin-hotel/property/save': 'AdminHotelApi.createProperty',
+  'PUT /admin-hotel/property/save/:hotelId': 'AdminHotelApi.updateProperty',
+  'DELETE /admin-hotel/property/delete/:hotelId': 'AdminHotelApi.destroyProperty',
 };
 
 module.exports = publicRoutes;
