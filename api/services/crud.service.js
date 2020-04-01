@@ -52,6 +52,16 @@ const destroy = async (model, objectToFind) => {
     });
 }
 
+const destroyHard = async (model, objectToFind) => {
+    return new Promise((resolve, reject) => {
+        model.destroy({ where: objectToFind }).then((res) => {
+            resolve(JSON.parse(JSON.stringify(res)));
+        }).catch((err) => {
+            reject(err)
+        });
+    });
+}
+
 const get = async (model, options) => {
     return new Promise((resolve, reject) => {
         model.findAll(options).then((res) => {
@@ -77,6 +87,7 @@ module.exports = {
     insert,
     update,
     destroy,
+    destroyHard,
     get,
     getOne
 };
