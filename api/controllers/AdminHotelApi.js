@@ -1,5 +1,7 @@
 const AdminHotelModel = require('../models/HotelAdmin/AdminHotel');
 const AdminHotelContactModel = require('../models/HotelAdmin/AdminHotelContact');
+const AdminHotelFacilitiesModel = require('../models/HotelAdmin/AdminHotelFacilities');
+
 const crudService = require('../services/crud.service');
 const schema = require('../schemas/AdminHotel');
 
@@ -154,6 +156,12 @@ const AdminHotelApi = () => {
                     distinct: true,
                 });
                 propertyData.contactDetail = responseContact || [];
+                let responseFacilities = await crudService.get(AdminHotelFacilitiesModel, {
+                    where: { isDeleted: false, hotelId: req.params.hotelId },
+                    attributes: ["facilityId", "id"],
+                    distinct: true,
+                });
+                propertyData.facilities = responseFacilities.map(t => t.facilityId) || [];
                 return res.status(200).json({
                     code: 2000,
                     success: true,
@@ -178,12 +186,86 @@ const AdminHotelApi = () => {
         }
     };
 
+    const assignFacilities = (req, res) => {
+        crudService.validate(req.body, schema.saveFacilities).then(async (reqData) => {
+            try {
+                let hotelList = await crudService.get(AdminHotelModel, {
+                    where: { isDeleted: false, id: req.params.hotelId },
+                    attributes: ["id"],
+                    distinct: true
+                });
+                if (hotelList && hotelList.length > 0) {
+                    // GET ALL FACILITIES OF THE PROPERTY
+                    let allHotelFacilities = await crudService.get(AdminHotelFacilitiesModel, {
+                        where: { hotelId: req.params.hotelId },
+                        attributes: ["id", "hotelId", "facilityId"],
+                        distinct: true
+                    });
+                    if (allHotelFacilities && allHotelFacilities.length > 0) {
+                        for (let facilitiesData of allHotelFacilities) {
+                            let isExists = reqData.facilities.findIndex(t => t == facilitiesData.facilityId);
+                            console.log(facilitiesData + isExists);
+                            if (isExists === -1) {
+                                console.log("hi")
+                                await crudService.destroy(AdminHotelFacilitiesModel, {
+                                    id: facilitiesData.id,
+                                    hotelId: facilitiesData.hotelId
+                                });
+                            } else {
+                                await crudService.update(AdminHotelFacilitiesModel, {
+                                    id: facilitiesData.id,
+                                    hotelId: facilitiesData.hotelId
+                                }, { isDeleted: false }, false);
+                            }
+                        }
+                    } else {
+                        for (let facilityId of reqData.facilities) {
+                            if (facilityId) {
+                                let facilitiesData = { hotelId: req.params.hotelId, facilityId: facilityId };
+                                await crudService.insert(AdminHotelFacilitiesModel, facilitiesData);
+                            }
+                        }
+                    }
+                    return res.status(200).json({
+                        code: 2000,
+                        success: true,
+                        message: `Property facilities assigned successfully.`,
+                        data: {}
+                    });
+                } else {
+                    return res.status(200).json({
+                        code: 4004,
+                        success: false,
+                        message: 'Invalid Hotel Id',
+                        data: {},
+                    });
+                }
+            } catch (error) {
+                console.log(error);
+                return res.status(500).json({
+                    code: 5000,
+                    message: 'Internal server error',
+                    error: error,
+                });
+            }
+        }).catch(err => {
+            return res.status(200).json({
+                code: 4002,
+                success: false,
+                message: 'Validation Failed',
+                error: err,
+            });
+        });
+    };
+
     return {
         createProperty,
         updateProperty,
         destroyProperty,
         getProperty,
-        getPropertyById
+        getPropertyById,
+
+        assignFacilities
     };
 };
 module.exports = AdminHotelApi;

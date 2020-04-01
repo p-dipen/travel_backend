@@ -27,9 +27,11 @@ const insert = (model, dataToInsert) => {
     });
 }
 
-const update = async (model, objectToFind, attributesToUpdate) => {
+const update = async (model, objectToFind, attributesToUpdate, checkNonDeletedDataOnly = true) => {
     return new Promise((resolve, reject) => {
-        objectToFind.isDeleted = false;
+        if (checkNonDeletedDataOnly) {
+            objectToFind.isDeleted = false;
+        }
         attributesToUpdate.isDeleted = false;
         attributesToUpdate.deletedAt = null;
         model.update(attributesToUpdate, { where: objectToFind }).then((res) => {

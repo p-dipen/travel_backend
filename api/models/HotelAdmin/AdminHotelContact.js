@@ -38,11 +38,12 @@ const AdminHotelContact = sequelize.define('AdminHotelContact', {
     },
     hotelId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
-          model: AdminHotel,
-          key: 'id',
+            model: AdminHotel,
+            key: 'id',
         },
-      },
+    },
     isDeleted: {
         type: Sequelize.BOOLEAN,
     },

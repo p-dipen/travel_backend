@@ -27,6 +27,12 @@ const adminHotelSchemas = {
             'contactDetail.*.fax_num': 'string',
             'contactDetail.*.website_link': 'string'
         }
+    },
+    saveFacilities: {
+        validator: {
+            'facilities': 'required|array',
+            'facilities.*': 'string'
+        }
     }
 }
 

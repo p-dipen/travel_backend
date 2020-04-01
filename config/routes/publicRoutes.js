@@ -52,6 +52,8 @@ const publicRoutes = {
   'POST /admin-hotel/property/save': 'AdminHotelApi.createProperty',
   'PUT /admin-hotel/property/save/:hotelId': 'AdminHotelApi.updateProperty',
   'DELETE /admin-hotel/property/delete/:hotelId': 'AdminHotelApi.destroyProperty',
+
+  'POST /admin-hotel/facility/assign/:hotelId': 'AdminHotelApi.assignFacilities',
 };
 
 module.exports = publicRoutes;

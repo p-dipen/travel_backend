@@ -13,7 +13,8 @@
 				"e37fc357-0bf5-0041-c196-491fbf96f38e",
 				"42fcc0e2-b8db-f3f4-ee94-e3d67124faaa",
 				"2e65847b-dcd2-177d-d5a2-0eadd418c982",
-				"d29e73e1-feaa-efbd-6110-89adb3d6b6c6"
+				"d29e73e1-feaa-efbd-6110-89adb3d6b6c6",
+				"7208ffbe-89fb-858c-a2dd-34b3f106db37"
 			],
 			"owner": 0,
 			"folders_order": [],
@@ -310,7 +311,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1584278929988,
+			"time": 1585736688006,
 			"name": "Add",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
@@ -836,6 +837,37 @@
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
 			"responses": []
+		},
+		{
+			"id": "7208ffbe-89fb-858c-a2dd-34b3f106db37",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/admin-hotel/facility/assign/10",
+			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1585746477118,
+			"name": "Assign Facilities",
+			"description": "",
+			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
+			"responses": [],
+			"rawModeData": "{\n\t\"facilities\":[\"1\",\"2\"]\n}"
 		},
 		{
 			"id": "721d69ec-ec3e-7847-3c0f-99c1944c1280",

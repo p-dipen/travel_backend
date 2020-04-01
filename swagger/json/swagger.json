@@ -1696,6 +1696,55 @@
           }
         }
       }
+    },
+    "/admin-hotel/facility/assign/{hotelId}": {
+      "post": {
+        "tags": [
+          "Admin Hotel"
+        ],
+        "summary": "Assign Facilities to admin hotel based on Id",
+        "description": "",
+        "operationId": "assignFacilityAdminHotel",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hotelId",
+            "in": "path",
+            "description": "ID of hotel to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "facilities",
+            "description": "Array of id of facility",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Assign-Admin-Hotel-Facility"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -1921,6 +1970,28 @@
                 "type": "string"
               }
             }
+          }
+        }
+      }
+    },
+    "Assign-Admin-Hotel-Facility": {
+      "type": "object",
+      "required": [
+        "name",
+        "member_name",
+        "addressLine1",
+        "contact_person_name",
+        "country",
+        "city",
+        "province",
+        "pincode",
+        "timezone"
+      ],
+      "properties": {
+        "facilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         }
       }
