@@ -1745,6 +1745,234 @@
           }
         }
       }
+    },
+    "/admin-hotel/room/save/{hotelId}": {
+      "post": {
+        "tags": [
+          "Admin Hotel"
+        ],
+        "summary": "Save hotel Room based on hotelId",
+        "description": "",
+        "operationId": "addRoomAdminHotel",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hotelId",
+            "in": "path",
+            "description": "ID of hotel to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "facilities",
+            "description": "Array of id of facility",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Room-Admin-Hotel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin-hotel/room/save/{hotelId}/{roomId}": {
+      "put": {
+        "tags": [
+          "Admin Hotel"
+        ],
+        "summary": "Update hotel Room based on hotelId & room Id",
+        "description": "",
+        "operationId": "updateRoomAdminHotel",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hotelId",
+            "in": "path",
+            "description": "ID of hotel to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "roomId",
+            "in": "path",
+            "description": "ID of room to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "facilities",
+            "description": "Array of id of facility",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Room-Admin-Hotel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin-hotel/room-rate/save/{hotelId}/{roomId}": {
+      "post": {
+        "tags": [
+          "Admin Hotel"
+        ],
+        "summary": "Update hotel Room Rates based on hotelId & room Id",
+        "description": "",
+        "operationId": "saveRoomRatesAdminHotel",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hotelId",
+            "in": "path",
+            "description": "ID of hotel to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "roomId",
+            "in": "path",
+            "description": "ID of room to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "facilities",
+            "description": "Array of id of facility",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Room-Rate-Admin-Hotel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/admin-hotel/room-rate/save/{hotelId}/{roomId}/{id}": {
+      "put": {
+        "tags": [
+          "Admin Hotel"
+        ],
+        "summary": "Update hotel Room Rates based on hotelId & room Id",
+        "description": "",
+        "operationId": "updateRoomRatesAdminHotel",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hotelId",
+            "in": "path",
+            "description": "ID of hotel to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "roomId",
+            "in": "path",
+            "description": "ID of room to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of room rates to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "facilities",
+            "description": "Array of id of facility",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Room-Rate-Admin-Hotel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -1993,6 +2221,212 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "Room-Admin-Hotel": {
+      "type": "object",
+      "required": [
+        "name",
+        "room_type",
+        "max_capacity",
+        "total_bedroom_per_unit",
+        "max_child",
+        "max_adult",
+        "max_infant",
+        "buffer_room",
+        "available_room",
+        "inclusions",
+        "facilities",
+        "bedding"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "room_type": {
+          "type": "integer"
+        },
+        "total_room": {
+          "type": "integer"
+        },
+        "max_capacity": {
+          "type": "integer"
+        },
+        "total_bedroom_per_unit": {
+          "type": "integer"
+        },
+        "max_child": {
+          "type": "integer"
+        },
+        "max_adult": {
+          "type": "integer"
+        },
+        "max_infant": {
+          "type": "integer"
+        },
+        "buffer_room": {
+          "type": "integer"
+        },
+        "available_room": {
+          "type": "integer"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inclusions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "facilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "bedding": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "bedding_config": {
+                "type": "integer"
+              },
+              "bedding_type": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Room-Rate-Admin-Hotel": {
+      "type": "object",
+      "required": [
+        "date_from",
+        "date_to",
+        "commission_type",
+        "commission_weekday",
+        "commission_weekend",
+        "net_rate_weekday",
+        "net_rate_weekend",
+        "cost_rate_weekday",
+        "cost_rate_weekend",
+        "no_of_adult",
+        "no_of_child",
+        "no_of_infant",
+        "customize_net_rate_weekday",
+        "customize_net_rate_weekend",
+        "customize_cost_rate_weekday",
+        "customize_cost_rate_weekend",
+        "extra_adult_weekday",
+        "extra_adult_weekend",
+        "extra_child_weekday",
+        "extra_child_weekend",
+        "extra_infant_weekday",
+        "extra_infant_weekend",
+        "allocation_weekday",
+        "allocation_weekend",
+        "min_stay",
+        "max_room_per_booking",
+        "notification_after_units",
+        "cut_of_day"
+      ],
+      "properties": {
+        "date_from": {
+          "description": "date(YYYY-MM-DD)",
+          "type": "string"
+        },
+        "date_to": {
+          "description": "date(YYYY-MM-DD)",
+          "type": "string"
+        },
+        "commission_type": {
+          "description": "percent || dollar",
+          "type": "string"
+        },
+        "commission_weekday": {
+          "type": "integer"
+        },
+        "commission_weekend": {
+          "type": "integer"
+        },
+        "net_rate_weekday": {
+          "type": "integer"
+        },
+        "net_rate_weekend": {
+          "type": "integer"
+        },
+        "cost_rate_weekday": {
+          "type": "integer"
+        },
+        "cost_rate_weekend": {
+          "type": "integer"
+        },
+        "no_of_adult": {
+          "type": "integer"
+        },
+        "no_of_child": {
+          "type": "integer"
+        },
+        "no_of_infant": {
+          "type": "integer"
+        },
+        "customize_net_rate_weekday": {
+          "type": "integer"
+        },
+        "customize_net_rate_weekend": {
+          "type": "integer"
+        },
+        "customize_cost_rate_weekday": {
+          "type": "integer"
+        },
+        "customize_cost_rate_weekend": {
+          "type": "integer"
+        },
+        "extra_adult_weekday": {
+          "type": "integer"
+        },
+        "extra_adult_weekend": {
+          "type": "integer"
+        },
+        "extra_child_weekday": {
+          "type": "integer"
+        },
+        "extra_child_weekend": {
+          "type": "integer"
+        },
+        "extra_infant_weekday": {
+          "type": "integer"
+        },
+        "extra_infant_weekend": {
+          "type": "integer"
+        },
+        "allocation_weekday": {
+          "type": "integer"
+        },
+        "allocation_weekend": {
+          "type": "integer"
+        },
+        "min_stay": {
+          "type": "integer"
+        },
+        "max_room_per_booking": {
+          "type": "integer"
+        },
+        "notification_after_units": {
+          "type": "integer"
+        },
+        "cut_of_day": {
+          "type": "integer"
         }
       }
     },
