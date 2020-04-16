@@ -958,12 +958,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1585767241909,
+			"time": 1587051703898,
 			"name": "Assign Facilities",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
 			"responses": [],
-			"rawModeData": "{\n\t\"facilities\":[\"1\"]\n}"
+			"rawModeData": "{\n\t\"facilities\":[{\"facilityId\":\"1\", \"description\":\"\"}]\n}"
 		},
 		{
 			"id": "721d69ec-ec3e-7847-3c0f-99c1944c1280",

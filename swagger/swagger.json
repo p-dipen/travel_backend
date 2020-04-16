@@ -2219,7 +2219,14 @@
         "facilities": {
           "type": "array",
           "items": {
-            "type": "string"
+            "properties": {
+              "facilityId": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
           }
         }
       }

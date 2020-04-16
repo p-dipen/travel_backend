@@ -31,7 +31,7 @@ const adminHotelSchemas = {
     saveFacilities: {
         validator: {
             'facilities': 'required|array',
-            'facilities.*.facilityId': 'required|integer',
+            'facilities.*.facilityId': 'required|string',
             'facilities.*.description': 'string',
         }
     },
