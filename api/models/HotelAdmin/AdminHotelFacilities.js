@@ -22,6 +22,9 @@ const AdminHotelFacilities = sequelize.define('AdminHotelFacilities', {
             key: 'id',
         }
     },
+    description: {
+        type: Sequelize.STRING,
+    },
     hotelId: {
         type: Sequelize.INTEGER,
         allowNull: false,

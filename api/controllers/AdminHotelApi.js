@@ -270,9 +270,9 @@ const AdminHotelApi = () => {
                     await crudService.destroy(AdminHotelFacilitiesModel, {
                         hotelId: req.params.hotelId
                     });
-                    for (let facilityId of reqData.facilities) {
-                        if (facilityId) {
-                            let facilitiesData = { hotelId: req.params.hotelId, facilityId: facilityId };
+                    for (let facilities of reqData.facilities) {
+                        if (facilities.facilityId) {
+                            let facilitiesData = { hotelId: req.params.hotelId, facilityId: facilities.facilityId, description: facilities.description };
                             await crudService.insert(AdminHotelFacilitiesModel, facilitiesData);
                         }
                     }
