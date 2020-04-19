@@ -20,7 +20,10 @@ const AdminHotel = sequelize.define('AdminHotel', {
     member_name: {
         type: Sequelize.STRING,
     },
-    address: {
+    addressLine1: {
+        type: Sequelize.STRING,
+    },
+    addressLine2: {
         type: Sequelize.STRING,
     },
     // doubt 
@@ -56,9 +59,6 @@ const AdminHotel = sequelize.define('AdminHotel', {
     },
     communication_address: {
         type: Sequelize.BOOLEAN,
-    },
-    labels: {
-        type: Sequelize.STRING,
     },
     images: {
         type: Sequelize.STRING,

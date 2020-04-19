@@ -12,7 +12,12 @@
 				"7d7f0037-112b-ec55-892a-28ba9a0e5a67",
 				"e37fc357-0bf5-0041-c196-491fbf96f38e",
 				"42fcc0e2-b8db-f3f4-ee94-e3d67124faaa",
-				"2e65847b-dcd2-177d-d5a2-0eadd418c982"
+				"2e65847b-dcd2-177d-d5a2-0eadd418c982",
+				"d29e73e1-feaa-efbd-6110-89adb3d6b6c6",
+				"7208ffbe-89fb-858c-a2dd-34b3f106db37",
+				"37e9b7ca-3e56-7a59-e30a-5b40f9c0b481",
+				"4ff658d4-0782-fb26-6694-c84df1db83a9",
+				"0c08722a-7b88-2348-1b53-2f60dd0519cb"
 			],
 			"owner": 0,
 			"folders_order": [],
@@ -286,6 +291,37 @@
 			"rawModeData": "{\n\t\"name\":\"Meal Type\",\n\t\"description\":\"Meal Type Description\"\n}"
 		},
 		{
+			"id": "0c08722a-7b88-2348-1b53-2f60dd0519cb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/admin-hotel/room-rate/save/10/7",
+			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1585770103528,
+			"name": "Add Room Rates",
+			"description": "",
+			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
+			"responses": [],
+			"rawModeData": "{\r\n    \"date_from\":\"2020-04-02\",\r\n    \"date_to\":\"2020-04-04\",\r\n    \"commission_type\":\"percent\",\r\n    \"commission_weekday\":2,\r\n    \"commission_weekend\":1,\r\n    \"net_rate_weekday\":1,\r\n    \"net_rate_weekend\":1,\r\n    \"cost_rate_weekday\":1,\r\n    \"cost_rate_weekend\":1,\r\n    \"no_of_adult\":1,\r\n    \"no_of_child\":1,\r\n    \"no_of_infant\":1,\r\n    \"customize_net_rate_weekday\":1,\r\n    \"customize_net_rate_weekend\":1,\r\n    \"customize_cost_rate_weekday\":1,\r\n    \"customize_cost_rate_weekend\":1,\r\n    \"extra_adult_weekday\":1,\r\n    \"extra_adult_weekend\":1,\r\n    \"extra_child_weekday\":1,\r\n    \"extra_child_weekend\":1,\r\n    \"extra_infant_weekday\":1,\r\n    \"extra_infant_weekend\":1,\r\n    \"allocation_weekday\":1,\r\n    \"allocation_weekend\":1,\r\n    \"min_stay\":1,\r\n    \"max_room_per_booking\":1,\r\n    \"notification_after_units\":1,\r\n    \"cut_of_day\":1\r\n}"
+		},
+		{
 			"id": "11bf93fd-cc09-095f-b2de-11ea1fb3d871",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -309,7 +345,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1584278929988,
+			"time": 1585736688006,
 			"name": "Add",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
@@ -443,7 +479,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:2019/public/admin-hotel/delete/1",
+			"url": "http://localhost:2019/public/admin-hotel/property/delete/11",
 			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -456,7 +492,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1584280230038,
+			"time": 1585732561104,
 			"name": "Delete",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
@@ -493,6 +529,37 @@
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
 			"responses": [],
 			"rawModeData": "{\n\t\"name\":\"Service\",\n\t\"description\":\"Service Description\"\n}"
+		},
+		{
+			"id": "37e9b7ca-3e56-7a59-e30a-5b40f9c0b481",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/admin-hotel/room/save/10",
+			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1585762359777,
+			"name": "Add Room",
+			"description": "",
+			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"Room 1\",\n  \"description\": \"Description\",\n  \"room_type\": 1,\n  \"total_room\": 10,\n  \"max_capacity\": 2,\n  \"total_bedroom_per_unit\": 1,\n  \"max_child\": 3,\n  \"max_adult\": 4,\n  \"max_infant\": 1,\n  \"buffer_room\": 1,\n  \"available_room\": 10,\n  \"bedding\": [{\"bedding_config\":1,\"bedding_type\":\"1\"}],\n  \"inclusions\": [\"1\"],\n  \"facilities\": [\"1\"]\n}"
 		},
 		{
 			"id": "406ff4ba-f11a-4eca-d8b5-f9cb67a23622",
@@ -590,7 +657,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:2019/public/admin-hotel/save/1",
+			"url": "http://localhost:2019/public/admin-hotel/property/save/11",
 			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -603,12 +670,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1584280387379,
+			"time": 1585732340031,
 			"name": "Update",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
 			"responses": [],
-			"rawModeData": "{\r\n  \"name\": \"Hotel Admin\",\r\n  \"member_name\": \"Member\",\r\n  \"address\": \"Address Line\",\r\n  \"country\": \"Country\",\r\n  \"city\": \"City\",\r\n  \"province\": \"123456\",\r\n  \"pincode\": \"380001\",\r\n  \"timezone\": \"+5:30\",\r\n  \"telephone_num\": \"+919409656872\",\r\n  \"contact_num\": \"+919409656872\",\r\n  \"email\": \"ravishah207539@gmail.com\",\r\n  \"contact_person_name\": \"Ravi Shah\",\r\n  \"website_link\": \"http://www.google.com\",\r\n  \"communication_address\": true,\r\n  \"labels\": \"Label\",\r\n  \"images\": \"Base64\"\r\n}"
+			"rawModeData": "{\n  \"name\": \"Hotel Admin1\",\n  \"member_name\": \"Member1\",\n  \"addressLine1\": \"Address Line\",\n  \"addressLine2\": \"Address Line\",\n  \"country\": \"Country\",\n  \"city\": \"City\",\n  \"province\": \"123456\",\n  \"pincode\": \"380001\",\n  \"timezone\": \"+5:30\",\n  \"telephone_num\": \"+919409656872\",\n  \"contact_num\": \"+919409656872\",\n  \"email\": \"ravishah207539@gmail.com\",\n  \"contact_person_name\": \"Ravi Shah\",\n  \"website_link\": \"http://www.google.com\",\n  \"communication_address\": true,\n  \"contactDetail\": [\n    {\n      \"id\": \"16\",\n      \"firstname\": \"RaviShah\",\n      \"lastname\": \"RaviShah\"\n    },\n    {\n      \"id\": \"17\",\n      \"firstname\": \"RaviShah1\",\n      \"lastname\": \"RaviShah1\"\n    },\n    {\n      \"id\": \"23\",\n      \"firstname\": \"abc11\",\n      \"lastname\": \"xyz11\"\n    },\n    {\n      \"firstname\": \"abc\",\n      \"lastname\": \"xyz\"\n    }\n  ]\n}"
 		},
 		{
 			"id": "4b179327-f345-7b05-adf8-39872900d590",
@@ -671,6 +738,37 @@
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
 			"responses": [],
 			"rawModeData": "{}"
+		},
+		{
+			"id": "4ff658d4-0782-fb26-6694-c84df1db83a9",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/admin-hotel/room-rate/save/10/7/1",
+			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1585770044700,
+			"name": "Update Room Rates",
+			"description": "",
+			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
+			"responses": [],
+			"rawModeData": "{\r\n    \"date_from\":\"2020-04-02\",\r\n    \"date_to\":\"2020-04-04\",\r\n    \"commission_type\":\"percent\",\r\n    \"commission_weekday\":2,\r\n    \"commission_weekend\":1,\r\n    \"net_rate_weekday\":1,\r\n    \"net_rate_weekend\":1,\r\n    \"cost_rate_weekday\":1,\r\n    \"cost_rate_weekend\":1,\r\n    \"no_of_adult\":1,\r\n    \"no_of_child\":1,\r\n    \"no_of_infant\":1,\r\n    \"customize_net_rate_weekday\":1,\r\n    \"customize_net_rate_weekend\":1,\r\n    \"customize_cost_rate_weekday\":1,\r\n    \"customize_cost_rate_weekend\":1,\r\n    \"extra_adult_weekday\":1,\r\n    \"extra_adult_weekend\":1,\r\n    \"extra_child_weekday\":1,\r\n    \"extra_child_weekend\":1,\r\n    \"extra_infant_weekday\":1,\r\n    \"extra_infant_weekend\":1,\r\n    \"allocation_weekday\":1,\r\n    \"allocation_weekend\":1,\r\n    \"min_stay\":1,\r\n    \"max_room_per_booking\":1,\r\n    \"notification_after_units\":1,\r\n    \"cut_of_day\":1\r\n}"
 		},
 		{
 			"id": "5137d965-fd9d-10a7-757d-c5f3d4a8b99a",
@@ -837,6 +935,37 @@
 			"responses": []
 		},
 		{
+			"id": "7208ffbe-89fb-858c-a2dd-34b3f106db37",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/admin-hotel/facility/assign/10",
+			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587051703898,
+			"name": "Assign Facilities",
+			"description": "",
+			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
+			"responses": [],
+			"rawModeData": "{\n\t\"facilities\":[{\"facilityId\":\"1\", \"description\":\"\"}]\n}"
+		},
+		{
 			"id": "721d69ec-ec3e-7847-3c0f-99c1944c1280",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -902,7 +1031,7 @@
 			"id": "7d7f0037-112b-ec55-892a-28ba9a0e5a67",
 			"headers": "",
 			"headerData": [],
-			"url": "http://localhost:2019/public/admin-hotel/get",
+			"url": "http://localhost:2019/public/admin-hotel/property/get",
 			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -915,7 +1044,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1584280169555,
+			"time": 1585733530608,
 			"name": "Get",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
@@ -1239,6 +1368,29 @@
 			"rawModeData": "{}"
 		},
 		{
+			"id": "d29e73e1-feaa-efbd-6110-89adb3d6b6c6",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:2019/public/admin-hotel/property/get/10",
+			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1585733956915,
+			"name": "Get By hotel Id",
+			"description": "",
+			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
+			"responses": []
+		},
+		{
 			"id": "dae6b27d-126a-11a3-4eb8-e60820b91ab2",
 			"headers": "",
 			"headerData": [],
@@ -1272,7 +1424,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:2019/public/admin-hotel/save",
+			"url": "http://localhost:2019/public/admin-hotel/property/save",
 			"folder": "9e4a192d-3b63-fed4-1dfb-9b1b18e47527",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -1285,12 +1437,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1584280376009,
+			"time": 1585731385187,
 			"name": "Add",
 			"description": "",
 			"collectionId": "fe8b6c1e-4a83-7d00-d37a-116ab7e87617",
 			"responses": [],
-			"rawModeData": "{\r\n  \"name\": \"Hotel Admin\",\r\n  \"member_name\": \"Member\",\r\n  \"address\": \"Address Line\",\r\n  \"country\": \"Country\",\r\n  \"city\": \"City\",\r\n  \"province\": \"123456\",\r\n  \"pincode\": \"380001\",\r\n  \"timezone\": \"+5:30\",\r\n  \"telephone_num\": \"+919409656872\",\r\n  \"contact_num\": \"+919409656872\",\r\n  \"email\": \"ravishah207539@gmail.com\",\r\n  \"contact_person_name\": \"Ravi Shah\",\r\n  \"website_link\": \"http://www.google.com\",\r\n  \"communication_address\": true,\r\n  \"labels\": \"Label\",\r\n  \"images\": \"Base64\"\r\n}"
+			"rawModeData": "{\r\n  \"name\": \"Hotel Admin\",\r\n  \"member_name\": \"Member\",\r\n  \"addressLine1\": \"Address Line\",\r\n    \"addressLine2\": \"Address Line\",\r\n  \"country\": \"Country\",\r\n  \"city\": \"City\",\r\n  \"province\": \"123456\",\r\n  \"pincode\": \"380001\",\r\n  \"timezone\": \"+5:30\",\r\n  \"telephone_num\": \"+919409656872\",\r\n  \"contact_num\": \"+919409656872\",\r\n  \"email\": \"ravishah207539@gmail.com\",\r\n  \"contact_person_name\": \"Ravi Shah\",\r\n  \"website_link\": \"http://www.google.com\",\r\n  \"communication_address\": true,\r\n  \"contactDetail\":[{\"firstname\":\"Ravi\", \"lastname\":\"Shah\"},{\"firstname\":\"Ravi1\", \"lastname\":\"Shah1\"}]\r\n}"
 		},
 		{
 			"id": "f50eeaa9-321c-1474-5627-ddb40b376635",
