@@ -19,7 +19,8 @@
     "pretest": "npm run lint",
     "production": "cross-env NODE_ENV=production node ./api/api.js",
     "test": "npm run create-sqlite-db; cross-env NODE_ENV=testing jest --coverage; npm run drop-sqlite-db",
-    "test-ci": "jest --coverage --forceExit"
+    "test-ci": "jest --coverage --forceExit",
+    "testing": "cross-env NODE_ENV=testing node ./api/api.js"
   },
   "jest": {
     "globals": {
