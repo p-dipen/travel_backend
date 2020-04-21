@@ -232,7 +232,7 @@ const AdminHotelApi = () => {
                 // GET ROOM RATES
                 let responseRoomRates = await crudService.get(AdminHotelRoomRatesModel, {
                     where: { isDeleted: false, hotelId: req.params.hotelId },
-                    attributes: ["id", "roomId", "date_from", "date_to", "commission_type", "commission_weekday", "commission_weekend", "net_rate_weekday", "net_rate_weekend", "cost_rate_weekday", "cost_rate_weekend", "no_of_adult", "no_of_child", "no_of_infant", "customize_net_rate_weekday", "customize_net_rate_weekend", "customize_cost_rate_weekday", "customize_cost_rate_weekend", "extra_adult_weekday", "extra_adult_weekend", "extra_child_weekday", "extra_child_weekend", "extra_infant_weekday", "extra_infant_weekend", "allocation_weekday", "allocation_weekend", "min_stay", "max_room_per_booking", "notification_after_units", "cut_of_day"],
+                    attributes: ["id", "roomId", "date_from", "date_to", "commission_type", "commission_weekday", "commission_weekend", "net_rate_weekday", "net_rate_weekend", "cost_rate_weekday", "cost_rate_weekend", "per_adult_net_rate_weekday", "per_adult_net_rate_weekend", "per_adult_cost_rate_weekday", "per_adult_cost_rate_weekend", "per_child_net_rate_weekday", "per_child_net_rate_weekend", "per_child_cost_rate_weekday", "per_child_cost_rate_weekend", "per_infant_net_rate_weekday", "per_infant_net_rate_weekend", "per_infant_cost_rate_weekday", "per_infant_cost_rate_weekend", "extra_adult_weekday", "extra_adult_weekend", "extra_child_weekday", "extra_child_weekend", "extra_infant_weekday", "extra_infant_weekend", "allocation_weekday", "allocation_weekend", "min_stay", "max_room_per_booking", "notification_after_units", "cut_of_day"],
                 });
                 console.log(responseRoomRates);
                 for (let room of propertyData.room) {
@@ -464,6 +464,7 @@ const AdminHotelApi = () => {
                         response = await crudService.update(AdminHotelRoomRatesModel, { hotelId: req.params.hotelId, roomId: req.params.roomId, id: req.params.id }, reqData);
                         response = { id: req.params.id };
                     } else {
+                        console.log(reqData)
                         let res = await crudService.insert(AdminHotelRoomRatesModel, reqData);
                         response = { id: res.id };
                     }
