@@ -502,6 +502,7 @@ const AdminHotelApi = () => {
         destroyProperty,
         getProperty,
         getPropertyById,
+
         assignFacilities,
         saveRoom,
         saveRoomRates
