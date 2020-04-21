@@ -2327,13 +2327,18 @@
         "net_rate_weekend",
         "cost_rate_weekday",
         "cost_rate_weekend",
-        "no_of_adult",
-        "no_of_child",
-        "no_of_infant",
-        "customize_net_rate_weekday",
-        "customize_net_rate_weekend",
-        "customize_cost_rate_weekday",
-        "customize_cost_rate_weekend",
+        "per_adult_net_rate_weekday",
+        "per_adult_net_rate_weekend",
+        "per_adult_cost_rate_weekday",
+        "per_adult_cost_rate_weekend",
+        "per_child_net_rate_weekday",
+        "per_child_net_rate_weekend",
+        "per_child_cost_rate_weekday",
+        "per_child_cost_rate_weekend",
+        "per_infant_net_rate_weekday",
+        "per_infant_net_rate_weekend",
+        "per_infant_cost_rate_weekday",
+        "per_infant_cost_rate_weekend",
         "extra_adult_weekday",
         "extra_adult_weekend",
         "extra_child_weekday",
@@ -2378,25 +2383,40 @@
         "cost_rate_weekend": {
           "type": "integer"
         },
-        "no_of_adult": {
+        "per_adult_net_rate_weekday": {
           "type": "integer"
         },
-        "no_of_child": {
+        "per_adult_net_rate_weekend": {
           "type": "integer"
         },
-        "no_of_infant": {
+        "per_adult_cost_rate_weekday": {
           "type": "integer"
         },
-        "customize_net_rate_weekday": {
+        "per_adult_cost_rate_weekend": {
           "type": "integer"
         },
-        "customize_net_rate_weekend": {
+        "per_child_net_rate_weekday": {
           "type": "integer"
         },
-        "customize_cost_rate_weekday": {
+        "per_child_net_rate_weekend": {
           "type": "integer"
         },
-        "customize_cost_rate_weekend": {
+        "per_child_cost_rate_weekday": {
+          "type": "integer"
+        },
+        "per_child_cost_rate_weekend": {
+          "type": "integer"
+        },
+        "per_infant_net_rate_weekday": {
+          "type": "integer"
+        },
+        "per_infant_net_rate_weekend": {
+          "type": "integer"
+        },
+        "per_infant_cost_rate_weekday": {
+          "type": "integer"
+        },
+        "per_infant_cost_rate_weekend": {
           "type": "integer"
         },
         "extra_adult_weekday": {
