@@ -38,6 +38,34 @@
 			"id": "fe5545d8-6e71-bb99-da21-6b96e3ce602f"
 		},
 		{
+			"name": "Master - City",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"order": [
+				"012bd8cb-f542-f98b-4380-9497c45727f4",
+				"79051b90-80d3-7455-4395-af8b87ed6ac8",
+				"923504ad-49a0-0a91-a0f7-3f008f09c4d8",
+				"61d0c0ef-c40f-faed-0d19-2a88503b6f32"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "5bbfaa00-0719-edeb-ce83-cb68b5aa1d51"
+		},
+		{
+			"name": "Master - Country",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"order": [
+				"6c932ec0-741a-cdb9-cb03-32316c0c443e",
+				"c90fd587-2402-8a9b-99ff-fec48d386a91",
+				"13bff820-e1e7-73e4-a822-d9913da32f88",
+				"a2be1d7d-37c5-21f3-ea5a-b3a70e3805c2"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "b2d97c15-8957-53f7-39cc-fa1bccf6f82b"
+		},
+		{
 			"name": "Master - Inclusions",
 			"description": "",
 			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
@@ -108,6 +136,20 @@
 			"id": "8a467a77-c827-fd02-7d9b-243da27df532"
 		},
 		{
+			"name": "Master - Province",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"order": [
+				"0a20f179-5c8c-c3d7-5e05-2c8ff7680bfd",
+				"32756d09-b2f4-7f55-6b1b-b59ecceb2740",
+				"149178f7-2af3-baf0-068b-742da861bf1f",
+				"4aa18f63-9311-f156-1b31-938a4e98d0fb"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "c1ba63e1-3ebc-977b-d5d4-7720384a51e0"
+		},
+		{
 			"name": "Master - Room Facilities",
 			"description": "",
 			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
@@ -148,10 +190,28 @@
 			"owner": 0,
 			"folders_order": [],
 			"id": "4be1ad01-214b-894d-fa15-77cfa6ae7832"
+		},
+		{
+			"name": "Master - Timezone",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"order": [
+				"e30dfec9-90fc-3511-4006-7066bdbd0fa7",
+				"adf968a5-5462-24fb-a022-cdc198fa18fb",
+				"1f7a260e-ce9a-342d-aae4-e68b850037b7",
+				"cde7feb9-52bc-1dad-6343-b61c3bc2824a"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "ea9ca19b-ef7e-4fa0-fbb8-1c1181a5f654"
 		}
 	],
 	"folders_order": [
 		"fe5545d8-6e71-bb99-da21-6b96e3ce602f",
+		"b2d97c15-8957-53f7-39cc-fa1bccf6f82b",
+		"c1ba63e1-3ebc-977b-d5d4-7720384a51e0",
+		"5bbfaa00-0719-edeb-ce83-cb68b5aa1d51",
+		"ea9ca19b-ef7e-4fa0-fbb8-1c1181a5f654",
 		"d048b125-558f-c0df-c02a-40597a172a0a",
 		"10e4ed7c-aae7-2310-f4e9-144d22e5e3e8",
 		"f8a0c5be-4d34-4f9b-2c11-f64c4793e96e",
@@ -165,8 +225,115 @@
 	"timestamp": 1584278717417,
 	"owner": 0,
 	"public": false,
-	"hasRequests": true,
 	"requests": [
+		{
+			"id": "012bd8cb-f542-f98b-4380-9497c45727f4",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:2019/public/city/get/1",
+			"folder": "5bbfaa00-0719-edeb-ce83-cb68b5aa1d51",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587746783078,
+			"name": "Get",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": []
+		},
+		{
+			"id": "0a20f179-5c8c-c3d7-5e05-2c8ff7680bfd",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:2019/public/province/get",
+			"folder": "c1ba63e1-3ebc-977b-d5d4-7720384a51e0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587744347190,
+			"name": "Get",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": []
+		},
+		{
+			"id": "13bff820-e1e7-73e4-a822-d9913da32f88",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/country/save/1",
+			"folder": "b2d97c15-8957-53f7-39cc-fa1bccf6f82b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587743225469,
+			"name": "Update",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\":\"India\"\n}"
+		},
+		{
+			"id": "149178f7-2af3-baf0-068b-742da861bf1f",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/province/save/2/1",
+			"folder": "c1ba63e1-3ebc-977b-d5d4-7720384a51e0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587744439352,
+			"name": "Update",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\":\"Maharastra\"\n}"
+		},
 		{
 			"id": "162d404d-d582-1599-e651-f4d62dce1813",
 			"headers": "Content-Type: application/json\n",
@@ -232,6 +399,37 @@
 			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
 		},
 		{
+			"id": "1f7a260e-ce9a-342d-aae4-e68b850037b7",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/timezone/save/2/1",
+			"folder": "ea9ca19b-ef7e-4fa0-fbb8-1c1181a5f654",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587744150115,
+			"name": "Update",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{\n\t\"timezone\":\"+05:30\"\n}"
+		},
+		{
 			"id": "2e440f5e-c2f4-8ad4-a156-df7552ada03b",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -242,7 +440,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:2019/public/admin-hotel/room/save/10",
+			"url": "http://localhost:2019/public/admin-hotel/room/save/1",
 			"folder": "c572c8a0-3ebb-d099-626f-4f6f27fabcac",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -255,13 +453,43 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1585762359777,
+			"time": 1587486698853,
 			"name": "Add Room",
 			"description": "",
 			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
 			"responses": [],
-			"rawModeData": "{\n  \"name\": \"Room 1\",\n  \"description\": \"Description\",\n  \"room_type\": 1,\n  \"total_room\": 10,\n  \"max_capacity\": 2,\n  \"total_bedroom_per_unit\": 1,\n  \"max_child\": 3,\n  \"max_adult\": 4,\n  \"max_infant\": 1,\n  \"buffer_room\": 1,\n  \"available_room\": 10,\n  \"bedding\": [{\"bedding_config\":1,\"bedding_type\":\"1\"}],\n  \"inclusions\": [\"1\"],\n  \"facilities\": [\"1\"]\n}",
-			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
+			"rawModeData": "{\n  \"name\": \"Room 1\",\n  \"description\": \"Description\",\n  \"room_type\": 1,\n  \"total_room\": 10,\n  \"max_capacity\": 2,\n  \"total_bedroom_per_unit\": 1,\n  \"max_child\": 3,\n  \"max_adult\": 4,\n  \"max_infant\": 1,\n  \"buffer_room\": 1,\n  \"available_room\": 10,\n  \"bedding\": [{\"bedding_config\":1,\"bedding_type\":\"1\"}],\n  \"inclusions\": [\"1\"],\n  \"facilities\": [\"1\"]\n}"
+		},
+		{
+			"id": "32756d09-b2f4-7f55-6b1b-b59ecceb2740",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/province/save/2",
+			"folder": "c1ba63e1-3ebc-977b-d5d4-7720384a51e0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587744414024,
+			"name": "Add",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\":\"Gujarat\"\n}"
 		},
 		{
 			"id": "38a6d863-7143-9b28-c2bc-43b08e612e46",
@@ -352,6 +580,37 @@
 			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
 		},
 		{
+			"id": "4aa18f63-9311-f156-1b31-938a4e98d0fb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/province/delete/2/2",
+			"folder": "c1ba63e1-3ebc-977b-d5d4-7720384a51e0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587744464604,
+			"name": "Delete",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{}"
+		},
+		{
 			"id": "50d41b38-fed1-5d26-d43a-499f0623e6f1",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -440,6 +699,37 @@
 			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
 		},
 		{
+			"id": "61d0c0ef-c40f-faed-0d19-2a88503b6f32",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/province/delete/2/2",
+			"folder": "5bbfaa00-0719-edeb-ce83-cb68b5aa1d51",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587744464604,
+			"name": "Delete",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{}"
+		},
+		{
 			"id": "67ac5377-23c6-4f85-3513-b00ed42baa6b",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -504,6 +794,29 @@
 			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
 		},
 		{
+			"id": "6c932ec0-741a-cdb9-cb03-32316c0c443e",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:2019/public/country/get",
+			"folder": "b2d97c15-8957-53f7-39cc-fa1bccf6f82b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587743127339,
+			"name": "Get",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": []
+		},
+		{
 			"id": "755e4020-f449-1540-866c-fb702a6ca65e",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -559,13 +872,43 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1585731385187,
+			"time": 1587746323195,
 			"name": "Add",
 			"description": "",
 			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
 			"responses": [],
-			"rawModeData": "{\r\n  \"name\": \"Hotel Admin\",\r\n  \"member_name\": \"Member\",\r\n  \"addressLine1\": \"Address Line\",\r\n    \"addressLine2\": \"Address Line\",\r\n  \"country\": \"Country\",\r\n  \"city\": \"City\",\r\n  \"province\": \"123456\",\r\n  \"pincode\": \"380001\",\r\n  \"timezone\": \"+5:30\",\r\n  \"telephone_num\": \"+919409656872\",\r\n  \"contact_num\": \"+919409656872\",\r\n  \"email\": \"ravishah207539@gmail.com\",\r\n  \"contact_person_name\": \"Ravi Shah\",\r\n  \"website_link\": \"http://www.google.com\",\r\n  \"communication_address\": true,\r\n  \"contactDetail\":[{\"firstname\":\"Ravi\", \"lastname\":\"Shah\"},{\"firstname\":\"Ravi1\", \"lastname\":\"Shah1\"}]\r\n}",
-			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
+			"rawModeData": "{\r\n  \"name\": \"Hotel Admin\",\r\n  \"member_name\": \"Member\",\r\n  \"addressLine1\": \"Address Line\",\r\n    \"addressLine2\": \"Address Line\",\r\n  \"country\": \"Country\",\r\n  \"city\": \"City\",\r\n  \"province\": \"123456\",\r\n  \"pincode\": \"380001\",\r\n  \"timezone\": \"+5:30\",\r\n  \"telephone_num\": \"+919409656872\",\r\n  \"contact_num\": \"+919409656872\",\r\n  \"email\": \"ravishah207539@gmail.com\",\r\n  \"contact_person_name\": \"Ravi Shah\",\r\n  \"website_link\": \"http://www.google.com\",\r\n  \"images\":[\"A\",\"B\"],\r\n  \"communication_address\": true,\r\n  \"contactDetail\":[{\"firstname\":\"Ravi\", \"lastname\":\"Shah\"},{\"firstname\":\"Ravi1\", \"lastname\":\"Shah1\"}]\r\n}"
+		},
+		{
+			"id": "79051b90-80d3-7455-4395-af8b87ed6ac8",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/city/save/1",
+			"folder": "5bbfaa00-0719-edeb-ce83-cb68b5aa1d51",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587746620796,
+			"name": "Add",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\":\"Mumbai\"\n}"
 		},
 		{
 			"id": "7bd95143-da30-6c21-a575-6ca29229d677",
@@ -622,6 +965,37 @@
 			"responses": [],
 			"rawModeData": "{}",
 			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
+		},
+		{
+			"id": "923504ad-49a0-0a91-a0f7-3f008f09c4d8",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/city/save/1/1",
+			"folder": "5bbfaa00-0719-edeb-ce83-cb68b5aa1d51",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587746695648,
+			"name": "Update",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\":\"Mumbai\"\n}"
 		},
 		{
 			"id": "924b757b-bf51-ed90-9774-1dc3604914ca",
@@ -872,6 +1246,37 @@
 			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
 		},
 		{
+			"id": "a2be1d7d-37c5-21f3-ea5a-b3a70e3805c2",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/country/delete/1",
+			"folder": "b2d97c15-8957-53f7-39cc-fa1bccf6f82b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587743175640,
+			"name": "Delete",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{}"
+		},
+		{
 			"id": "a523833a-8736-f483-8e5b-7daad77ea31c",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -914,7 +1319,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:2019/public/admin-hotel/facility/assign/10",
+			"url": "http://localhost:2019/public/admin-hotel/facility/assign/1",
 			"folder": "c572c8a0-3ebb-d099-626f-4f6f27fabcac",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -927,13 +1332,43 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1587051703898,
+			"time": 1587486673016,
 			"name": "Assign Facilities",
 			"description": "",
 			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
 			"responses": [],
-			"rawModeData": "{\n\t\"facilities\":[{\"facilityId\":\"1\", \"description\":\"\"}]\n}",
-			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
+			"rawModeData": "{\n\t\"facilities\":[{\"facilityId\":\"1\", \"description\":\"\"}]\n}"
+		},
+		{
+			"id": "adf968a5-5462-24fb-a022-cdc198fa18fb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/timezone/save/2",
+			"folder": "ea9ca19b-ef7e-4fa0-fbb8-1c1181a5f654",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587744122783,
+			"name": "Add",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{\n\t\"timezone\":\"+05:30\"\n}"
 		},
 		{
 			"id": "af6af20b-4572-7d0e-2c6f-5d1e2d458dbf",
@@ -1034,7 +1469,7 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:2019/public/admin-hotel/room-rate/save/10/7",
+			"url": "http://localhost:2019/public/admin-hotel/room-rate/save/1/2",
 			"folder": "c572c8a0-3ebb-d099-626f-4f6f27fabcac",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -1047,7 +1482,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1587483706868,
+			"time": 1587743023950,
 			"name": "Add Room Rates",
 			"description": "",
 			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
@@ -1224,6 +1659,68 @@
 			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
 		},
 		{
+			"id": "c90fd587-2402-8a9b-99ff-fec48d386a91",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/country/save",
+			"folder": "b2d97c15-8957-53f7-39cc-fa1bccf6f82b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587743144222,
+			"name": "Add",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\":\"India\"\n}"
+		},
+		{
+			"id": "cde7feb9-52bc-1dad-6343-b61c3bc2824a",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/timezone/delete/2/2",
+			"folder": "ea9ca19b-ef7e-4fa0-fbb8-1c1181a5f654",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587744101225,
+			"name": "Delete",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{}"
+		},
+		{
 			"id": "d80de959-d460-29f6-a9f4-8de78ff50290",
 			"headers": "",
 			"headerData": [],
@@ -1334,6 +1831,29 @@
 			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
 			"responses": [],
 			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
+		},
+		{
+			"id": "e30dfec9-90fc-3511-4006-7066bdbd0fa7",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:2019/public/timezone/get",
+			"folder": "ea9ca19b-ef7e-4fa0-fbb8-1c1181a5f654",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587743929108,
+			"name": "Get",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": []
 		},
 		{
 			"id": "e3c73c38-783b-5368-448e-9f9adc146bcc",

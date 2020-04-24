@@ -2,6 +2,30 @@ const publicRoutes = {
   'GET /pass': 'Encrypt.passwordEncrytp',
   'GET /demo': 'ResponseApi.alldata',
 
+  'GET /country/get': 'CountryApi.get',
+  'POST /country/save': 'CountryApi.save',
+  'PUT /country/save/:id': 'CountryApi.save',
+  'DELETE /country/delete/:id': 'CountryApi.destroy',
+
+  'GET /province/get': 'ProvinceApi.get',
+  'GET /province/get/:countryId': 'ProvinceApi.get',
+  'POST /province/save/:countryId': 'ProvinceApi.save',
+  'PUT /province/save/:countryId/:id': 'ProvinceApi.save',
+  'DELETE /province/delete/:countryId/:id': 'ProvinceApi.destroy',
+
+  'GET /timezone/get': 'TimezoneApi.get',
+  'GET /timezone/get/:countryId': 'TimezoneApi.get',
+  'POST /timezone/save/:countryId': 'TimezoneApi.save',
+  'PUT /timezone/save/:countryId/:id': 'TimezoneApi.save',
+  'DELETE /timezone/delete/:countryId/:id': 'TimezoneApi.destroy',
+
+  'GET /city/get': 'CityApi.get',
+  'GET /city/get/:provinceId': 'CityApi.get',
+  'POST /city/save/:provinceId': 'CityApi.save',
+  'PUT /city/save/:provinceId/:id': 'CityApi.save',
+  'DELETE /city/delete/:provinceId/:id': 'CityApi.destroy',
+
+
   'GET /bedding-type/get': 'BeddingTypeApi.get',
   'POST /bedding-type/save': 'BeddingTypeApi.create',
   'PUT /bedding-type/save/:id': 'BeddingTypeApi.update',

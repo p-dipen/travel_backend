@@ -12,6 +12,22 @@
   "basePath": "/public",
   "tags": [
     {
+      "name": "Country",
+      "description": "CRUD of Country"
+    },
+    {
+      "name": "Timezone",
+      "description": "CRUD of Timezone"
+    },
+    {
+      "name": "Province",
+      "description": "CRUD of Province"
+    },
+    {
+      "name": "City",
+      "description": "CRUD of City"
+    },
+    {
       "name": "Bedding Type",
       "description": "CRUD of Bedding Type"
     },
@@ -57,6 +73,838 @@
     "https"
   ],
   "paths": {
+    "/country/get": {
+      "get": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Get all country",
+        "description": "",
+        "operationId": "getCountry",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/country/save": {
+      "post": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Add a new country",
+        "description": "",
+        "operationId": "addCountry",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Bedding_Type",
+            "description": "Country object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Country"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/country/save/{id}": {
+      "put": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Update Country based on ID",
+        "description": "",
+        "operationId": "updateCountry",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the country to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Country",
+            "description": "Country object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Country"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/country/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Delete an existing bedding type based on Id",
+        "description": "",
+        "operationId": "deleteCountry",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/timezone/get": {
+      "get": {
+        "tags": [
+          "Timezone"
+        ],
+        "summary": "Get all timezone",
+        "description": "",
+        "operationId": "getTimezone",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/timezone/get/{countryId}": {
+      "get": {
+        "tags": [
+          "Timezone"
+        ],
+        "summary": "Get all timezone by countryId",
+        "description": "",
+        "operationId": "getTimezoneByCountryId",
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "CountryId to get particular timezone",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/timezone/save/{countryId}": {
+      "post": {
+        "tags": [
+          "Timezone"
+        ],
+        "summary": "Add a new timezone",
+        "description": "",
+        "operationId": "addTimezone",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "CountryId to get particular timezone",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Bedding_Type",
+            "description": "Timezone object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Timezone"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/timezone/save/{countryId}/{id}": {
+      "put": {
+        "tags": [
+          "Timezone"
+        ],
+        "summary": "Update Timezone based on ID",
+        "description": "",
+        "operationId": "updateTimezone",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "CountryId to get particular timezone",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the timezone to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Timezone",
+            "description": "Timezone object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Timezone"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/timezone/delete/{countryId}/{id}": {
+      "delete": {
+        "tags": [
+          "Timezone"
+        ],
+        "summary": "Delete an existing bedding type based on Id",
+        "description": "",
+        "operationId": "deleteTimezone",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "CountryId to get particular timezone",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/province/get": {
+      "get": {
+        "tags": [
+          "Province"
+        ],
+        "summary": "Get all province",
+        "description": "",
+        "operationId": "getProvince",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/province/get/{countryId}": {
+      "get": {
+        "tags": [
+          "Province"
+        ],
+        "summary": "Get all province by countryId",
+        "description": "",
+        "operationId": "getProvinceByCountryId",
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "CountryId to get particular province",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/province/save/{countryId}": {
+      "post": {
+        "tags": [
+          "Province"
+        ],
+        "summary": "Add a new province",
+        "description": "",
+        "operationId": "addProvince",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "CountryId to get particular province",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Bedding_Type",
+            "description": "Province object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Province"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/province/save/{countryId}/{id}": {
+      "put": {
+        "tags": [
+          "Province"
+        ],
+        "summary": "Update Province based on ID",
+        "description": "",
+        "operationId": "updateProvince",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "CountryId to get particular province",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the province to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Province",
+            "description": "Province object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Province"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/province/delete/{countryId}/{id}": {
+      "delete": {
+        "tags": [
+          "Province"
+        ],
+        "summary": "Delete an existing bedding type based on Id",
+        "description": "",
+        "operationId": "deleteProvince",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "CountryId to get particular province",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/city/get": {
+      "get": {
+        "tags": [
+          "City"
+        ],
+        "summary": "Get all city",
+        "description": "",
+        "operationId": "getCity",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/city/get/{provinceId}": {
+      "get": {
+        "tags": [
+          "City"
+        ],
+        "summary": "Get all city by provinceId",
+        "description": "",
+        "operationId": "getCityByProvinceId",
+        "parameters": [
+          {
+            "name": "provinceId",
+            "in": "path",
+            "description": "ProvinceId to get particular city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/city/save/{provinceId}": {
+      "post": {
+        "tags": [
+          "City"
+        ],
+        "summary": "Add a new city",
+        "description": "",
+        "operationId": "addCity",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "provinceId",
+            "in": "path",
+            "description": "ProvinceId to get particular city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "Bedding_Type",
+            "description": "City object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/City"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/city/save/{provinceId}/{id}": {
+      "put": {
+        "tags": [
+          "City"
+        ],
+        "summary": "Update City based on ID",
+        "description": "",
+        "operationId": "updateCity",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "provinceId",
+            "in": "path",
+            "description": "ProvinceId to get particular city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the city to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "City",
+            "description": "City object that needs to be store in database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/City"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
+    "/city/delete/{provinceId}/{id}": {
+      "delete": {
+        "tags": [
+          "City"
+        ],
+        "summary": "Delete an existing bedding type based on Id",
+        "description": "",
+        "operationId": "deleteCity",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "provinceId",
+            "in": "path",
+            "description": "ProvinceId to get particular city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Success-Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error-Response"
+            }
+          }
+        }
+      }
+    },
     "/bedding-type/get": {
       "get": {
         "tags": [
@@ -1976,6 +2824,50 @@
     }
   },
   "definitions": {
+    "Country": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Timezone": {
+      "type": "object",
+      "required": [
+        "timezone"
+      ],
+      "properties": {
+        "timezone": {
+          "type": "string"
+        }
+      }
+    },
+    "Province": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "City": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
     "Bedding-Type": {
       "type": "object",
       "required": [
@@ -2162,7 +3054,10 @@
           "type": "boolean"
         },
         "images": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "contactDetail": {
           "type": "array",
