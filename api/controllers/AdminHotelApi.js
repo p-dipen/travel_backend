@@ -20,7 +20,7 @@ const AdminHotelApi = () => {
             try {
                 let response = {};
                 if (reqData.images && reqData.images.length > 0) {
-                    reqData.images = reqData.images.join('~');
+                    reqData.images = reqData.images.join(',');
                 }
                 let resHotelDetail = await crudService.insert(AdminHotelModel, reqData);
                 response = resHotelDetail;
@@ -59,7 +59,7 @@ const AdminHotelApi = () => {
         crudService.validate(req.body, schema.saveProperty).then(async (reqData) => {
             try {
                 if (reqData.images && reqData.images.length > 0) {
-                    reqData.images = reqData.images.join('~');
+                    reqData.images = reqData.images.join(',');
                 }
                 if (req.params.hotelId) {
                     await crudService.update(AdminHotelModel, { id: req.params.hotelId }, reqData);
