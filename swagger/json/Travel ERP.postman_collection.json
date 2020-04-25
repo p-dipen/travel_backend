@@ -17,7 +17,9 @@
 				"aadb5669-2b5f-cc09-a85a-32ab0249e370",
 				"2e440f5e-c2f4-8ad4-a156-df7552ada03b",
 				"9d351914-7482-6a79-a514-1138183d28d2",
-				"b469a140-caef-b111-47e8-b54499ba3b09"
+				"b469a140-caef-b111-47e8-b54499ba3b09",
+				"f0780f11-e2d4-9460-7125-2efbf187a611",
+				"a4fd75f7-c264-bb05-9e6a-d0c742ae2adb"
 			],
 			"owner": 0,
 			"folders_order": [],
@@ -559,7 +561,7 @@
 			"id": "49a394e7-e5a3-8ca3-ec78-cee68bc0c2bc",
 			"headers": "",
 			"headerData": [],
-			"url": "http://localhost:2019/public/admin-hotel/property/get/10",
+			"url": "http://localhost:2019/public/admin-hotel/property/get/1",
 			"folder": "c572c8a0-3ebb-d099-626f-4f6f27fabcac",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -572,12 +574,11 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1585733956915,
+			"time": 1587825667276,
 			"name": "Get By hotel Id",
 			"description": "",
 			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
-			"responses": [],
-			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
+			"responses": []
 		},
 		{
 			"id": "4aa18f63-9311-f156-1b31-938a4e98d0fb",
@@ -1277,6 +1278,37 @@
 			"rawModeData": "{}"
 		},
 		{
+			"id": "a4fd75f7-c264-bb05-9e6a-d0c742ae2adb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/admin-hotel/stop-sell/single/1/2",
+			"folder": "c572c8a0-3ebb-d099-626f-4f6f27fabcac",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587826197202,
+			"name": "Stop Sell Single",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{\n  \"stopSales\": [\n    {\n      \"date\": \"2020-04-24\",\n      \"stopSell\":true\n    }\n  ]\n}"
+		},
+		{
 			"id": "a523833a-8736-f483-8e5b-7daad77ea31c",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -1942,6 +1974,35 @@
 			"responses": [],
 			"rawModeData": "{\n\t\"name\":\"Inclusions\",\n\t\"description\":\"Inclusions Description\"\n}",
 			"collection_id": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7"
+		},
+		{
+			"id": "f0780f11-e2d4-9460-7125-2efbf187a611",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:2019/public/admin-hotel/stop-sell/range/1/2",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1587826867436,
+			"name": "Stop Sell Range",
+			"description": "",
+			"collectionId": "ea7552d9-4adb-1759-4eba-f181bbf6a2e7",
+			"responses": [],
+			"rawModeData": "{\n  \"date_from\": \"2020-04-24\",\n  \"date_to\": \"2020-04-28\",\n  \"stopSell\": true\n}"
 		},
 		{
 			"id": "f6513835-2c92-dccd-5153-6d2c6ee9a579",

@@ -81,7 +81,10 @@ const publicRoutes = {
   'POST /admin-hotel/room/save/:hotelId': 'AdminHotelApi.saveRoom',
   'PUT /admin-hotel/room/save/:hotelId/:roomId': 'AdminHotelApi.saveRoom',
   'POST /admin-hotel/room-rate/save/:hotelId/:roomId': 'AdminHotelApi.saveRoomRates',
-  'PUT /admin-hotel/room-rate/save/:hotelId/:roomId/:id': 'AdminHotelApi.saveRoomRates'
+  'PUT /admin-hotel/room-rate/save/:hotelId/:roomId/:id': 'AdminHotelApi.saveRoomRates',
+
+  'POST /admin-hotel/stop-sell/range/:hotelId/:roomId': 'AdminHotelApi.stopSalesRange',
+  'POST /admin-hotel/stop-sell/single/:hotelId/:roomId': 'AdminHotelApi.stopSales'
 };
 
 module.exports = publicRoutes;

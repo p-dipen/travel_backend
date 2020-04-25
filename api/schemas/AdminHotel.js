@@ -99,6 +99,22 @@ const adminHotelSchemas = {
             "notification_after_units": "required|integer",
             "cut_of_day": "required|integer"
         }
+    },
+
+    stopSales: {
+        validator: {
+            "stopSales": 'required|array',
+            "stopSales.*.date": "required|date",
+            "stopSales.*.stopSell": "required|boolean"
+        }
+    },
+
+    stopSalesRange: {
+        validator: {
+            "date_from": "required|date",
+            "date_to": "required|date",
+            "stopSell": "required|boolean"
+        }
     }
 }
 
