@@ -244,7 +244,6 @@ const AdminHotelApi = () => {
                     where: { isDeleted: false, hotelId: req.params.hotelId },
                     attributes: ["id", "roomId", "date_from", "date_to", "commission_type", "commission_weekday", "commission_weekend", "net_rate_weekday", "net_rate_weekend", "cost_rate_weekday", "cost_rate_weekend", "per_adult_net_rate_weekday", "per_adult_net_rate_weekend", "per_adult_cost_rate_weekday", "per_adult_cost_rate_weekend", "per_child_net_rate_weekday", "per_child_net_rate_weekend", "per_child_cost_rate_weekday", "per_child_cost_rate_weekend", "per_infant_net_rate_weekday", "per_infant_net_rate_weekend", "per_infant_cost_rate_weekday", "per_infant_cost_rate_weekend", "extra_adult_weekday", "extra_adult_weekend", "extra_child_weekday", "extra_child_weekend", "extra_infant_weekday", "extra_infant_weekend", "allocation_weekday", "allocation_weekend", "min_stay", "max_room_per_booking", "notification_after_units", "cut_of_day"],
                 });
-                console.log(responseRoomRates);
                 for (let room of propertyData.room) {
                     room.rates = responseRoomRates.filter(t => t.roomId === parseInt(room.id));
                 }
@@ -255,7 +254,18 @@ const AdminHotelApi = () => {
                     attributes: ['id', 'date', 'roomId'],
                     distinct: true,
                 });
-                propertyData.stopSales = responseStopSells || [];
+                propertyData.stopSales = {};
+                propertyData.stopSalesRawData = responseStopSells;
+                for (let stopSaleData of responseStopSells) {
+                    let roomId = stopSaleData.roomId;
+                    let year = moment(stopSaleData.date, 'YYYY-MM-DD').format('YYYY');
+                    let month = moment(stopSaleData.date, 'YYYY-MM-DD').format('MM');
+                    propertyData.stopSales[roomId] = propertyData.stopSales[roomId] ? propertyData.stopSales[roomId] : {};
+                    propertyData.stopSales[roomId][year] = propertyData.stopSales[roomId][year] ? propertyData.stopSales[roomId][year] : {};
+                    propertyData.stopSales[roomId][year][month] = propertyData.stopSales[roomId][year][month] ? propertyData.stopSales[roomId][year][month] : [];
+                    propertyData.stopSales[roomId][year][month].push(stopSaleData);
+                }
+
                 return res.status(200).json({
                     code: 2000,
                     success: true,
