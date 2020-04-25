@@ -255,7 +255,7 @@ const AdminHotelApi = () => {
                     distinct: true,
                 });
                 propertyData.stopSales = {};
-                propertyData.stopSalesRawData = responseStopSells;
+                // propertyData.stopSalesRawData = responseStopSells;
                 for (let stopSaleData of responseStopSells) {
                     let roomId = stopSaleData.roomId;
                     let year = moment(stopSaleData.date, 'YYYY-MM-DD').format('YYYY');
