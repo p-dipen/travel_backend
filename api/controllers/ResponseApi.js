@@ -49,6 +49,21 @@ const ResponseApi = () => {
     }
     return res.status(200).json({ success: true, data: response });
   };
+  const alldatadota = async (req, res) => {
+    let response;
+    try {
+      let data = await sequelize.query(`SELECT code,name,'city' as type from dota.getcities
+      union all
+      select code,name,'country' as type from dota.getcountries;`,{raw:true});
+     response = data[0];
+    } catch (error) {
+      return res.status(500).json({
+        msg: 'Internal server erroror',
+        erroror: error,
+      });
+    }
+    return res.status(200).json({ success: true, data: response });
+  };
   const searchHotel = async (req, res) => {
     const { body } = req;
     const schema = Joi.object({
@@ -136,11 +151,108 @@ const ResponseApi = () => {
       return res.status(400).json({ success: false, error: error.message });
     }
   };
+  
+  const searchHotelDotw = async (req, res) => {
+    const { body } = req;
+    const schema = Joi.object({
+      code: Joi.number().integer().required().min(1),
+      typeCode:Joi.string().valid('city','country').required(),
+      adult: Joi.number().integer(),
+      child: Joi.number().integer(),
+      room: Joi.number().integer(),
+      hotel: Joi.number().integer().when(Joi.ref('type'), {
+        is: Joi.exist(),
+        then: Joi.required()
+      }),
+      startDate: Joi.date().required(),
+      endDate: Joi.date().required().greater(Joi.ref('startDate')),
+      type: Joi.string().valid('sega', 'dota', '')
+    });
+    try {
+      await schema.validateAsync(body);
+      let dotahotel;
+      if (body.type != '' && body.hotel < 1) {
+        return res.status(400).json({ success: false, error: 'hotelid is required to fetch rooms details.'});
+      }
+      if (body.type == '') {
+        dotahotel = searchhoteldotw(body)
+      } else if (body.type == 'dota') {
+        let fotahotel = await getHotelData(body)
+        return res.status(200).json({ success: true, data: fotahotel });
+      }
+        Promise.all([dotahotel]).then(value => {
+          return res.status(200).json({ success: true, data: value[0] });
+        })
+    } catch (error) {
+      return res.status(400).json({ success: false, error: error.message });
+    }
+  };
+
   return {
     alldata,
     searchHotel,
+    alldatadota,
+    searchHotelDotw
   };
 };
+
+const searchhoteldotw = async (request) => {
+  try {
+
+    let requestBody = `<customer>
+  <username>XML Praivit</username>
+  <password>9b3c209e73f7c01c83dbb6f4203ec2ff</password>
+  <id>262220</id>
+  <source>1</source>
+  <product>hotel</product>
+  <request command="searchhotels">
+      <bookingDetails>
+          <fromDate>`+ request.startDate + `</fromDate>
+          <toDate>`+ request.endDate + `</toDate>
+          <currency>413</currency>
+              <rooms no="1">
+                  <room runno="0">
+                      <adultsCode>`+ (request.adult != 0 ? request.adult : 1) + `</adultsCode>
+                      <children no="0">
+                      </children>
+                      <rateBasis>-1</rateBasis>
+                      <passengerNationality>20</passengerNationality>
+                      <passengerCountryOfResidence>20</passengerCountryOfResidence>
+                  </room>
+              </rooms>
+      </bookingDetails>
+      <return>
+      <getRooms>true</getRooms> 
+          <filters xmlns:a="http://us.dotwconnect.com/xsd/atomicCondition" xmlns:c="http://us.dotwconnect.com/xsd/complexCondition">
+              `+ (request.typeCode === 'city' ? '<city>' + request.code + '</city>' : '') + `
+              `+ (request.typeCode === 'country' ? '<country>' + request.code + '</country>' : '') + `
+              <noPrice>true</noPrice>
+          </filters>
+      </return>
+  </request>
+</customer>`
+    console.log(requestBody);
+    let data = await syncApi().callApiXml(requestBody)
+    let rating = new Map();
+    let datarating = await Rating.findAll({
+      attributes: ['code', 'name'],
+      raw: true
+    })
+    console.log(data.hotels);
+    for (let i = 0; i < datarating.length; i++) {
+      let element = datarating[i]
+      rating.set(element.code, element.name);
+    };
+    data.hotels[0].hotel.forEach(element => {
+      element.rating = rating.get(element.rating[0])
+    })
+    return data.hotels[0].hotel
+  } catch (erroror) {
+    console.log("erroror in dota", erroror);
+    return erroror.message
+  }
+}
+
 
 const searchHotelDota = async (request) => {
   try {
@@ -190,6 +302,7 @@ const searchHotelDota = async (request) => {
               </rooms>
       </bookingDetails>
       <return>
+      <getRooms>true</getRooms> 
           <filters xmlns:a="http://us.dotwconnect.com/xsd/atomicCondition" xmlns:c="http://us.dotwconnect.com/xsd/complexCondition">
               `+ (city ? '<city>' + counterOrCityid + '</city>' : '') + `
               `+ (country ? '<country>' + counterOrCityid + '</country>' : '') + `
@@ -205,6 +318,7 @@ const searchHotelDota = async (request) => {
       attributes: ['code', 'name'],
       raw:true
     })
+    console.log(data.hotels);
     for (let i=0;i< datarating.length;i++) {
       let element = datarating[i]
       rating.set(element.code,element.name);
