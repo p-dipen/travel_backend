@@ -41,25 +41,40 @@ const AdminHotelRoomRates = sequelize.define('AdminHotelRoomRates', {
     cost_rate_weekend: {
         type: Sequelize.FLOAT,
     },
-    no_of_adult: {
+    per_adult_net_rate_weekday: {
         type: Sequelize.FLOAT,
     },
-    no_of_child: {
+    per_adult_net_rate_weekend: {
         type: Sequelize.FLOAT,
     },
-    no_of_infant: {
+    per_adult_cost_rate_weekday: {
         type: Sequelize.FLOAT,
     },
-    customize_net_rate_weekday: {
+    per_adult_cost_rate_weekend: {
         type: Sequelize.FLOAT,
     },
-    customize_net_rate_weekend: {
+    per_child_net_rate_weekday: {
         type: Sequelize.FLOAT,
     },
-    customize_cost_rate_weekday: {
+    per_child_net_rate_weekend: {
         type: Sequelize.FLOAT,
     },
-    customize_cost_rate_weekend: {
+    per_child_cost_rate_weekday: {
+        type: Sequelize.FLOAT,
+    },
+    per_child_cost_rate_weekend: {
+        type: Sequelize.FLOAT,
+    },
+    per_infant_net_rate_weekday: {
+        type: Sequelize.FLOAT,
+    },
+    per_infant_net_rate_weekend: {
+        type: Sequelize.FLOAT,
+    },
+    per_infant_cost_rate_weekday: {
+        type: Sequelize.FLOAT,
+    },
+    per_infant_cost_rate_weekend: {
         type: Sequelize.FLOAT,
     },
     extra_adult_weekday: {

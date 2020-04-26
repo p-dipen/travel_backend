@@ -1,3 +1,27 @@
+const CountrySchemas = {
+    save: {
+        validator: {
+            'name': 'required|string'
+        }
+    }
+}
+
+const TimezoneSchemas = {
+    save: {
+        validator: {
+            'timezone': 'required|regex:[+-][0-9]{2}:[0-9]{2}\b'
+        }
+    }
+}
+
+const ProvinceSchemas = {
+    save: {
+        validator: {
+            'name': 'required|string'
+        }
+    }
+}
+
 const BeddingTypeSchemas = {
     save: {
         validator: {
@@ -83,6 +107,9 @@ const ServiceSchemas = {
 }
 
 module.exports = {
+    CountrySchemas,
+    TimezoneSchemas,
+    ProvinceSchemas,
     BeddingTypeSchemas,
     InclusionsSchemas,
     MealTypeSchemas,
