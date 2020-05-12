@@ -5,7 +5,7 @@ const dbService = (environment, migrate) => {
 
   const dropDB = () => database.drop();
 
-  const syncDB = () => database.sync();
+  const syncDB = () => database.sync({ alter: true });
 
   const successfulDBStart = () => (
     console.info('connection to the database has been established successfully')
