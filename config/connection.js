@@ -7,10 +7,10 @@ const development = {
 };
 
 const testing = {
-  database: 'dflqrtsv52tp2f',
-  username: 'arekrbzyzpvkvl',
-  password: '9e6890f12865a85527172a0bb5435fa1ed3a7621f3bfc2a639cb1187476057e5',
-  host: 'ec2-52-71-55-81.compute-1.amazonaws.com',
+  database: 'd5r15dahrniu7t',
+  username: 'kbqhcbciuoibjx',
+  password: 'fe38f11b15c3e2afa4278bbbd8753b9dffe8f35e0ac7b6fb17d80abc1f8132eb',
+  host: 'ec2-52-20-248-222.compute-1.amazonaws.com',
   dialect: 'postgres',
 };
 
