@@ -7,9 +7,11 @@ const AdminHotelRoomFacilitiesModel = require('../models/HotelAdmin/AdminHotelRo
 const AdminHotelRoomBeddingModel = require('../models/HotelAdmin/AdminHotelRoomBedding');
 const AdminHotelRoomInclusionsModel = require('../models/HotelAdmin/AdminHotelRoomInclusions');
 const AdminHotelRoomRatesModel = require('../models/HotelAdmin/AdminHotelRoomRates');
+const AdminHotelStopSaleModel = require('../models/HotelAdmin/AdminHotelStopSale');
 
 const crudService = require('../services/crud.service');
 const schema = require('../schemas/AdminHotel');
+const moment = require('moment');
 
 const AdminHotelApi = () => {
 
@@ -17,6 +19,9 @@ const AdminHotelApi = () => {
         crudService.validate(req.body, schema.saveProperty).then(async (reqData) => {
             try {
                 let response = {};
+                if (reqData.images && reqData.images.length > 0) {
+                    reqData.images = reqData.images.join(',');
+                }
                 let resHotelDetail = await crudService.insert(AdminHotelModel, reqData);
                 response = resHotelDetail;
                 response.contactDetail = [];
@@ -53,6 +58,9 @@ const AdminHotelApi = () => {
     const updateProperty = (req, res) => {
         crudService.validate(req.body, schema.saveProperty).then(async (reqData) => {
             try {
+                if (reqData.images && reqData.images.length > 0) {
+                    reqData.images = reqData.images.join(',');
+                }
                 if (req.params.hotelId) {
                     await crudService.update(AdminHotelModel, { id: req.params.hotelId }, reqData);
                     for (let contact of reqData.contactDetail) {
@@ -100,6 +108,8 @@ const AdminHotelApi = () => {
         try {
             if (req.params.hotelId) {
                 // DELETE ROOM REALTED STUFF
+                await crudService.destroy(AdminHotelStopSaleModel, { hotelId: req.params.hotelId });
+                await crudService.destroy(AdminHotelRoomRatesModel, { hotelId: req.params.hotelId });
                 await crudService.destroy(AdminHotelRoomInclusionsModel, { hotelId: req.params.hotelId });
                 await crudService.destroy(AdminHotelRoomBeddingModel, { hotelId: req.params.hotelId });
                 await crudService.destroy(AdminHotelRoomFacilitiesModel, { hotelId: req.params.hotelId });
@@ -232,12 +242,30 @@ const AdminHotelApi = () => {
                 // GET ROOM RATES
                 let responseRoomRates = await crudService.get(AdminHotelRoomRatesModel, {
                     where: { isDeleted: false, hotelId: req.params.hotelId },
-                    attributes: ["id", "roomId", "date_from", "date_to", "commission_type", "commission_weekday", "commission_weekend", "net_rate_weekday", "net_rate_weekend", "cost_rate_weekday", "cost_rate_weekend", "no_of_adult", "no_of_child", "no_of_infant", "customize_net_rate_weekday", "customize_net_rate_weekend", "customize_cost_rate_weekday", "customize_cost_rate_weekend", "extra_adult_weekday", "extra_adult_weekend", "extra_child_weekday", "extra_child_weekend", "extra_infant_weekday", "extra_infant_weekend", "allocation_weekday", "allocation_weekend", "min_stay", "max_room_per_booking", "notification_after_units", "cut_of_day"],
+                    attributes: ["id", "roomId", "date_from", "date_to", "commission_type", "commission_weekday", "commission_weekend", "net_rate_weekday", "net_rate_weekend", "cost_rate_weekday", "cost_rate_weekend", "per_adult_net_rate_weekday", "per_adult_net_rate_weekend", "per_adult_cost_rate_weekday", "per_adult_cost_rate_weekend", "per_child_net_rate_weekday", "per_child_net_rate_weekend", "per_child_cost_rate_weekday", "per_child_cost_rate_weekend", "per_infant_net_rate_weekday", "per_infant_net_rate_weekend", "per_infant_cost_rate_weekday", "per_infant_cost_rate_weekend", "extra_adult_weekday", "extra_adult_weekend", "extra_child_weekday", "extra_child_weekend", "extra_infant_weekday", "extra_infant_weekend", "allocation_weekday", "allocation_weekend", "min_stay", "max_room_per_booking", "notification_after_units", "cut_of_day"],
                 });
-                console.log(responseRoomRates);
                 for (let room of propertyData.room) {
                     room.rates = responseRoomRates.filter(t => t.roomId === parseInt(room.id));
                 }
+
+
+                let responseStopSells = await crudService.get(AdminHotelStopSaleModel, {
+                    where: { isDeleted: false, hotelId: req.params.hotelId },
+                    attributes: ['id', 'date', 'roomId'],
+                    distinct: true,
+                });
+                propertyData.stopSales = {};
+                // propertyData.stopSalesRawData = responseStopSells;
+                for (let stopSaleData of responseStopSells) {
+                    let roomId = stopSaleData.roomId;
+                    let year = moment(stopSaleData.date, 'YYYY-MM-DD').format('YYYY');
+                    let month = moment(stopSaleData.date, 'YYYY-MM-DD').format('MM');
+                    propertyData.stopSales[roomId] = propertyData.stopSales[roomId] ? propertyData.stopSales[roomId] : {};
+                    propertyData.stopSales[roomId][year] = propertyData.stopSales[roomId][year] ? propertyData.stopSales[roomId][year] : {};
+                    propertyData.stopSales[roomId][year][month] = propertyData.stopSales[roomId][year][month] ? propertyData.stopSales[roomId][year][month] : [];
+                    propertyData.stopSales[roomId][year][month].push(stopSaleData);
+                }
+
                 return res.status(200).json({
                     code: 2000,
                     success: true,
@@ -474,7 +502,12 @@ const AdminHotelApi = () => {
                         data: response
                     });
                 } else {
-
+                    return res.status(200).json({
+                        code: 4004,
+                        success: false,
+                        message: 'Invalid Hotel Id or Room Id',
+                        data: {},
+                    });
                 }
             } catch (error) {
                 console.error(error);
@@ -493,8 +526,151 @@ const AdminHotelApi = () => {
                 error: err,
             });
         });
-
     };
+
+    insertStopSale = (arrayOfStopSale, hotelId, roomId) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                for (let stopSaleObj of arrayOfStopSale) {
+                    stopSaleObj.hotelId = hotelId;
+                    stopSaleObj.roomId = roomId;
+                    let whereClause = { hotelId: stopSaleObj.hotelId, roomId: stopSaleObj.roomId, date: stopSaleObj.date };
+                    let isStopSellExists = await crudService.get(AdminHotelStopSaleModel, {
+                        where: whereClause,
+                        attributes: ['id', 'date', 'hotelId', 'roomId'],
+                        distinct: true
+                    });
+                    if (isStopSellExists && isStopSellExists.length > 0) {
+                        if (stopSaleObj.stopSell) {
+                            await crudService.update(AdminHotelStopSaleModel, whereClause, stopSaleObj, false);
+                        } else {
+                            await crudService.destroy(AdminHotelStopSaleModel, whereClause);
+                        }
+                    } else {
+                        if (stopSaleObj.stopSell) {
+                            await crudService.insert(AdminHotelStopSaleModel, stopSaleObj);
+                        } else {
+                            await crudService.destroy(AdminHotelStopSaleModel, whereClause);
+                        }
+                    }
+                }
+                let allStopSells = await crudService.get(AdminHotelStopSaleModel, {
+                    where: { isDeleted: false, hotelId: hotelId, roomId: roomId },
+                    attributes: ['id', 'date', 'hotelId', 'roomId'],
+                    distinct: true,
+                });
+                resolve(allStopSells);
+            } catch (error) {
+                console.error(error);
+                reject(error);
+            }
+        });
+    }
+
+    const stopSalesRange = (req, res) => {
+        crudService.validate(req.body, schema.stopSalesRange).then(async (reqData) => {
+            try {
+                reqData.hotelId = req.params.hotelId;
+                reqData.roomId = req.params.roomId;
+                let isHotelIdExists = isHotelIdValid(req.params.hotelId);
+                let isRoomIdExists = isRoomIdValid(req.params.hotelId, req.params.roomId);
+                if (isHotelIdExists && isRoomIdExists) {
+                    let arrayOfStopSale = [];
+                    let dateInc = moment(reqData.date_from, 'YYYY-MM-DD');
+                    for (let i = 0; moment(dateInc, 'YYYY-MM-DD') <= moment(reqData.date_to, 'YYYY-MM-DD'); i++) {
+                        arrayOfStopSale.push({
+                            date: moment(dateInc),
+                            stopSell: reqData.stopSell
+                        });
+                        dateInc = moment(dateInc, 'YYYY-MM-DD').add('day', 1).format('YYYY-MM-DD');
+                    }
+                    crudService.validate({ stopSales: arrayOfStopSale }, schema.stopSales).then(async (reqData) => {
+                        let response = await insertStopSale(arrayOfStopSale, req.params.hotelId, req.params.roomId);
+                        return res.status(200).json({
+                            code: 2000,
+                            success: true,
+                            message: `Stop Sales saved successfully.`,
+                            data: response
+                        });
+                    }).catch(err => {
+                        console.error(err);
+                        return res.status(200).json({
+                            code: 4002,
+                            success: false,
+                            message: 'Validation Failed',
+                            error: err,
+                        });
+                    });
+                } else {
+                    return res.status(200).json({
+                        code: 4004,
+                        success: false,
+                        message: 'Invalid Hotel Id or Room Id',
+                        data: {},
+                    });
+                }
+            } catch (error) {
+                console.error(error);
+                return res.status(500).json({
+                    code: 5000,
+                    message: 'Internal server error',
+                    error: error,
+                });
+            }
+        }).catch(err => {
+            console.error(err);
+            return res.status(200).json({
+                code: 4002,
+                success: false,
+                message: 'Validation Failed',
+                error: err,
+            });
+        });
+    };
+
+
+    const stopSales = (req, res) => {
+        crudService.validate(req.body, schema.stopSales).then(async (reqData) => {
+            try {
+                reqData.hotelId = req.params.hotelId;
+                reqData.roomId = req.params.roomId;
+                let isHotelIdExists = isHotelIdValid(req.params.hotelId);
+                let isRoomIdExists = isRoomIdValid(req.params.hotelId, req.params.roomId);
+                if (isHotelIdExists && isRoomIdExists) {
+                    let response = await insertStopSale(reqData.stopSales, req.params.hotelId, req.params.roomId);
+                    return res.status(200).json({
+                        code: 2000,
+                        success: true,
+                        message: `Stop Sales saved successfully.`,
+                        data: response
+                    });
+                } else {
+                    return res.status(200).json({
+                        code: 4004,
+                        success: false,
+                        message: 'Invalid Hotel Id or Room Id',
+                        data: {},
+                    });
+                }
+            } catch (error) {
+                console.error(error);
+                return res.status(500).json({
+                    code: 5000,
+                    message: 'Internal server error',
+                    error: error,
+                });
+            }
+        }).catch(err => {
+            console.error(err);
+            return res.status(200).json({
+                code: 4002,
+                success: false,
+                message: 'Validation Failed',
+                error: err,
+            });
+        });
+    };
+
 
     return {
         createProperty,
@@ -502,10 +678,11 @@ const AdminHotelApi = () => {
         destroyProperty,
         getProperty,
         getPropertyById,
-
         assignFacilities,
         saveRoom,
-        saveRoomRates
+        saveRoomRates,
+        stopSalesRange,
+        stopSales
     };
 };
 module.exports = AdminHotelApi;

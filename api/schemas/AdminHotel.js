@@ -16,7 +16,8 @@ const adminHotelSchemas = {
             'contact_person_name': 'required|string',
             'website_link': 'url|string',
             'communication_address': 'boolean',
-            'images': 'base64',
+            'images': 'array',
+            'images.*': 'string',
             'contactDetail': 'required|array',
             'contactDetail.*.id': 'string',
             'contactDetail.*.firstname': 'required|string',
@@ -73,13 +74,18 @@ const adminHotelSchemas = {
             "net_rate_weekend": "required|integer",
             "cost_rate_weekday": "required|integer",
             "cost_rate_weekend": "required|integer",
-            "no_of_adult": "required|integer",
-            "no_of_child": "required|integer",
-            "no_of_infant": "required|integer",
-            "customize_net_rate_weekday": "required|integer",
-            "customize_net_rate_weekend": "required|integer",
-            "customize_cost_rate_weekday": "required|integer",
-            "customize_cost_rate_weekend": "required|integer",
+            "per_adult_net_rate_weekday": "required|integer",
+            "per_adult_net_rate_weekend": "required|integer",
+            "per_adult_cost_rate_weekday": "required|integer",
+            "per_adult_cost_rate_weekend": "required|integer",
+            "per_child_net_rate_weekday": "required|integer",
+            "per_child_net_rate_weekend": "required|integer",
+            "per_child_cost_rate_weekday": "required|integer",
+            "per_child_cost_rate_weekend": "required|integer",
+            "per_infant_net_rate_weekday": "required|integer",
+            "per_infant_net_rate_weekend": "required|integer",
+            "per_infant_cost_rate_weekday": "required|integer",
+            "per_infant_cost_rate_weekend": "required|integer",
             "extra_adult_weekday": "required|integer",
             "extra_adult_weekend": "required|integer",
             "extra_child_weekday": "required|integer",
@@ -92,6 +98,22 @@ const adminHotelSchemas = {
             "max_room_per_booking": "required|integer",
             "notification_after_units": "required|integer",
             "cut_of_day": "required|integer"
+        }
+    },
+
+    stopSales: {
+        validator: {
+            "stopSales": 'required|array',
+            "stopSales.*.date": "required|date",
+            "stopSales.*.stopSell": "required|boolean"
+        }
+    },
+
+    stopSalesRange: {
+        validator: {
+            "date_from": "required|date",
+            "date_to": "required|date",
+            "stopSell": "required|boolean"
         }
     }
 }
