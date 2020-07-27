@@ -1,11 +1,11 @@
-const privateRoutes = require('./routes/privateRoutes');
-const publicRoutes = require('./routes/publicRoutes');
+const privateRoutes = require("./routes/privateRoutes");
+const publicRoutes = require("./routes/publicRoutes");
 
 const config = {
   migrate: true,
   privateRoutes,
   publicRoutes,
-  port: process.env.PORT || '2019',
+  port: process.env.PORT || "2019",
 };
 
 module.exports = config;
