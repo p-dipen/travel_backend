@@ -86,6 +86,11 @@ const publicRoutes = {
 
   "GET /get-hotel-list": "ListHotel.getHotel",
   "POST /accept-reject-hotel": "ListHotel.acceptRejectHotel",
+  "POST /channel": "Channel.createChannel",
+  "GET /channel/:id": "Channel.getChannel",
+  "PUT /channel/:id": "Channel.editChannel",
+  "DELETE /channel/:id": "Channel.deleteChannel",
+  "GET /channel": "Channel.getChannel",
 };
 
 module.exports = publicRoutes;
