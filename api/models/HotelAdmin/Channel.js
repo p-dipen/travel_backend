@@ -37,9 +37,13 @@ const Channels = sequelize.define(
     },
     isDeleted: {
       type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
     isActive: {
       type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
     },
     createdBy: {
       type: Sequelize.STRING,

@@ -90,7 +90,7 @@ const publicRoutes = {
   "GET /channel/:id": "Channel.getChannel",
   "PUT /channel/:id": "Channel.editChannel",
   "DELETE /channel/:id": "Channel.deleteChannel",
-  "GET /channel": "Channel.getChannel",
+  "GET /channels": "Channel.getAllChannels",
 };
 
 module.exports = publicRoutes;
