@@ -52,8 +52,8 @@ switch (process.env.NODE_ENV) {
           idle: 10000,
         },
         storage: path.join(process.cwd(), "db", "database.sqlite"),
-        // logging: false,
-        logging: console.log,
+        logging: false,
+        // logging: console.log,
       }
     );
 }

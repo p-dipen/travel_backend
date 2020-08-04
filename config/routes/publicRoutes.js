@@ -84,7 +84,8 @@ const publicRoutes = {
   "POST /admin-hotel/stop-sell/single/:hotelId/:roomId":
     "AdminHotelApi.stopSales",
 
-  "GET /get-hotel-list": "ListHotel.getHotel",
+  "GET /get-hotel-list": "ListHotel.getHotelSega",
+  "GET /get-hotel-list-dotw": "ListHotel.getHotelDotw",
   "POST /accept-reject-hotel": "ListHotel.acceptRejectHotel",
   "POST /channel": "Channel.createChannel",
   "GET /channel/:id": "Channel.getChannel",

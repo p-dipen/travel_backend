@@ -67,4 +67,4 @@ typings/
 db/database.sqlite
 
 # upload file
-app/public/uploads/
+api/public/uploads/

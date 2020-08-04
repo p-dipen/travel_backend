@@ -60,9 +60,9 @@ const ResponseApi = () => {
     let response;
     try {
       let data = await sequelize.query(
-        `SELECT code,name,'city' as type from dota.getcities
+        `SELECT code,name,'city' as type from dota.getserveringcities
       union all
-      select code,name,'country' as type from dota.getcountries;`,
+      select code,name,'country' as type from dota.getserveringcountries;`,
         { raw: true }
       );
       response = data[0];
