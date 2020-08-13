@@ -4,6 +4,9 @@ const Hotel = require("../models/HotelCategory/Hotel");
 const Town = require("../models/Town");
 const sequelize = require("../../config/database");
 const AcceptRejectHotel = require("../models/HotelAdmin/AcceptRejectedHotel");
+const axios = require("axios");
+const fuzz = require("fuzzball");
+const syncApi = require("../services/sync.service");
 const { Op, QueryTypes } = Sequelize;
 
 const ListHotel = () => {
@@ -118,7 +121,7 @@ const ListHotel = () => {
         where =
           where +
           ` and arh.hotel_system_id is not null and accept_reject=${accept_reject} `;
-        select = `,arh.id as accept_reject_id,arh.accept_reject`;
+        select = `,arh.id as accept_reject_id,arh.accept_reject,arh.view_id as view_accept_reject_id`;
       }
 
       const data = await sequelize.query(
@@ -127,7 +130,7 @@ const ListHotel = () => {
         { type: QueryTypes.SELECT, logging: console.log }
       );
       const maxHotel = await sequelize.query(
-        `select hd."updatedAt" from dota.hoteldata as hd inner join dota.getserveringcities as gc on gc.code = hd."cityCode" inner join dota.getserveringcountries as gcc on gcc.code = hd."countryCode" left join accept_reject_hotel as arh on arh.hotel_system_id = hd.hotelid where 1=1 ${where}
+        `select hd."updatedAt" from dota.hoteldata as hd inner join dota.getserveringcities as gc on gc.code = hd."cityCode" inner join dota.getserveringcountries as gcc on gcc.code = hd."countryCode" left join accept_reject_hotel as arh on arh.hotel_system_id = hd.hotelid where 1=1 ${where} limit 1
         `,
         { type: QueryTypes.SELECT, logging: console.log }
       );
@@ -150,11 +153,67 @@ const ListHotel = () => {
         accept_reject: Joi.bool().required(),
         travel_agent: Joi.string().valid("SEGA", "DOTW").required(),
         id: Joi.number(),
+        hotel_json: Joi.object(),
       });
       await schema.validateAsync(body);
       body.admin_id = 1;
-      const resp = await AcceptRejectHotel.upsert(body);
+      const resp = await AcceptRejectHotel.upsert(body, {
+        updateOnDuplicate: ["travel_agent", "admin_id", "hotel_system_id"],
+        returning: true,
+      });
+      console.log("entry in our system ", resp);
       if (body.accept_reject) {
+        const url =
+          "https://traveldb.herokuapp.com/public/admin-hotel/property/save";
+        const { hotel_json, travel_agent } = body;
+        let obj = {
+          name: "",
+          addressLine1: "",
+          country: 0,
+          city: 0,
+          province: 0,
+          pincode: "0",
+          timezone: 0,
+          isContactDetail: false,
+          isCorrespondanceDetail: false,
+        };
+        if (travel_agent == "DOTW") {
+          obj.name = hotel_json.hotelname;
+          obj.addressLine1 = hotel_json.address;
+          let getCityCountryRes = await getCityCountry(
+            hotel_json.city_name,
+            hotel_json.country_name
+          );
+          obj.country = getCityCountryRes.country_code;
+          obj.city = getCityCountryRes.city_code;
+          obj.province = getCityCountryRes.province_code;
+          obj.timezone = getCityCountryRes.timezone_code;
+        } else {
+          obj.name = hotel_json.name;
+          obj.addressLine1 =
+            hotel_json.town_name + ", " + hotel_json.state_name;
+          let getCityCountryRes = await getCityCountry(
+            hotel_json.town_name,
+            hotel_json.state_name
+          );
+          obj.country = getCityCountryRes.country_code;
+          obj.city = getCityCountryRes.city_code;
+          obj.province = getCityCountryRes.province_code;
+          obj.timezone = getCityCountryRes.timezone_code;
+        }
+        console.log("obj ", obj);
+        const res = await syncApi().commoncallJson(url, obj, "POST");
+        if (JSON.parse(res).success) {
+          console.log("success to update the field");
+          let viewId = { view_id: JSON.parse(res).data.id };
+          console.log(viewId);
+          const tt = await AcceptRejectHotel.update(viewId, {
+            where: { id: resp[0].dataValues.id },
+            logging: console.log,
+          });
+          console.log(tt);
+        }
+        console.log("insert hotel in admin panel ", res);
       }
       return res.status(200).json({
         msg: body.accept_reject
@@ -172,3 +231,60 @@ const ListHotel = () => {
 };
 
 module.exports = ListHotel;
+
+const getCityCountry = async (city, country) => {
+  let res = {
+    city_code: 0,
+    country_code: 0,
+    province_code: 0,
+    timezone_code: 0,
+  };
+  let getname = "city";
+  let extra = "";
+  let flag = true;
+  do {
+    let url = `https://traveldb.herokuapp.com/public/${getname}/get${extra}`;
+    const response = await axios.get(url);
+    console.log("citycountry ", response);
+    if (response.data && response.data.data.length > 0) {
+      for (let i = 0; i < response.data.data.length; i++) {
+        let element = response.data.data[i];
+        console.log(element);
+        let ratio = fuzz.ratio(
+          getname == "city" ? city : country,
+          element.name
+        );
+        console.log(ratio, getname == "city" ? city : country, element.name);
+        if (ratio > 80) {
+          if (getname == "city") {
+            res.city_code = element.id;
+            res.country_code = element.countryId;
+            res.province_code = element.provinceId;
+            getname = "country";
+            break;
+          } else if (getname == "country") {
+            res.country_code = element.id;
+            res.timezone_code = element.timezoneId;
+            flag = false;
+            break;
+          } else if (getname == "province") {
+            res.province_code = element.id;
+            res.country_code = element.countryId;
+            getname = "country";
+            break;
+          }
+        }
+      }
+    }
+    if (res.city_code == 0) {
+      getname = "province";
+    }
+    if (res.province_code == 0 && getname == "province") {
+      getname = "country";
+    }
+    if (getname == "country" && res.country_code == 0) {
+      flag = false;
+    }
+  } while (flag);
+  return res;
+};

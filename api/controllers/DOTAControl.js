@@ -46,13 +46,19 @@ const DOTAControl = () => {
                  <topDeals>true</topDeals>
                 <luxury>true</luxury>
                 <specialDeals>true</specialDeals>
-                 </filters>
+                </filters>
+                <fields>  
+                <field>countryName</field>  
+                <field>countryCode</field>  
+            </fields> 
                 </return></request>
                 </customer>`;
       }
       console.log(body);
-      let data = await syncApi().callApiXml(body);
-      response = data;
+      if (body != "" && body) {
+        let data = await syncApi().callApiXml(body);
+        response = data;
+      }
       console.log(response);
       switch (migrat[i]) {
         case "getallcities":
@@ -200,16 +206,19 @@ const DOTAControl = () => {
               let tmpcities = {
                 code: null,
                 name: null,
-                regionname: null,
-                regioncode: null,
+                countryname: null,
+                countrycode: null,
               };
               tmpcities.name = element.name[0];
               tmpcities.code = element.code[0];
-              // tmpcities.countryname = element.countryname[0] || null;
-              // tmpcities.countrycode = element.countrycode[0]|| null;
+              tmpcities.countryname = element.countryName[0] || null;
+              tmpcities.countrycode = element.countryCode[0] || null;
               cities.push(tmpcities);
               if (cities.length >= 499) {
-                await CitiesServer.bulkCreate(cities)
+                console.log(cities.length, i);
+                await CitiesServer.bulkCreate(cities, {
+                  updateOnDuplicate: ["code"],
+                })
                   .then((result) => {
                     cities = [];
                   })
@@ -290,6 +299,7 @@ const DOTAControl = () => {
         case "getstatichoteldata":
           let countryServe = await CountriesServer.findAll({
             attributes: ["code"],
+            where: { code: 175 },
             distinct: true,
             raw: true,
             limit: 10,

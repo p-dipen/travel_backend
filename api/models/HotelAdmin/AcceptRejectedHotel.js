@@ -32,6 +32,9 @@ const AcceptRejectHotel = sequelize.define(
       allowNull: false,
       unique: "uniqueAdminHotelAcceptReject",
     },
+    view_id: {
+      type: Sequelize.INTEGER,
+    },
   },
   { hooks, tableName }
 );

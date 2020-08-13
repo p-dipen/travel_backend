@@ -18,7 +18,7 @@ const ResponseApi = () => {
     try {
       const townArray = await Town.findAll({
         where: { name: { [Op.not]: null, [Op.notILike]: "UNKNOWN%" } },
-        attributes: ["inc", "name"],
+        attributes: ["inc", "name", "stateid"],
         distinct: true,
       });
       const stateArray = await State.findAll({
@@ -58,6 +58,7 @@ const ResponseApi = () => {
   };
   const alldatadota = async (req, res) => {
     let response;
+    let extra;
     try {
       let data = await sequelize.query(
         `SELECT code,name,'city' as type from dota.getserveringcities
@@ -66,13 +67,33 @@ const ResponseApi = () => {
         { raw: true }
       );
       response = data[0];
+      const cityArray = await CitiesServer.findAll({
+        where: { name: { [Op.not]: null, [Op.notILike]: "UNKNOWN%" } },
+        attributes: ["code", "name", "countryname", "countrycode"],
+        distinct: true,
+      });
+      const countryArray = await CountriesServer.findAll({
+        where: { name: { [Op.not]: null, [Op.notILike]: "UNKNOWN%" } },
+        attributes: ["code", "name"],
+        distinct: true,
+      });
+      const ratingArray = await Rating.findAll({
+        where: { name: { [Op.not]: null, [Op.notILike]: "UNKNOWN%" } },
+        attributes: ["code", "name"],
+        distinct: true,
+      });
+      extra = {
+        city: cityArray,
+        country: countryArray,
+        rating: ratingArray,
+      };
     } catch (error) {
       return res.status(500).json({
         msg: "Internal server erroror",
         erroror: error,
       });
     }
-    return res.status(200).json({ success: true, data: response });
+    return res.status(200).json({ success: true, data: response, extra });
   };
   const searchHotel = async (req, res) => {
     const { body } = req;
