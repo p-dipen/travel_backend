@@ -32,7 +32,7 @@ const DB = dbService(environment, config.migrate).start();
 // allow cross origin requests
 // configure to only allow requests from certain origins
 app.use(cors());
-app.use(express.bodyParser({ limit: "50mb" }));
+// app.use(bodyParser());
 
 // secure express app
 app.use(
@@ -44,7 +44,7 @@ app.use(
 );
 
 // parsing the request bodys
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
 app.use(bodyParser.json());
 
 // secure your private routes with jwt authentication middleware
