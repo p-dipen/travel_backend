@@ -70,8 +70,8 @@ const ListHotel = () => {
           where +
           ` and arh.hotel_system_id is not null and accept_reject=${accept_reject} `;
         groupby = `,arh.id,arh.accept_reject `;
-        select = `,arh.id as accept_reject_id,arh.accept_reject`;
-        outSelect = `,accept_reject_id,accept_reject `;
+        select = `,arh.id as accept_reject_id,arh.accept_reject,arh.view_id as view_accept_reject_id`;
+        outSelect = `,accept_reject_id,accept_reject,view_accept_reject_id `;
       }
 
       const data = await sequelize.query(
