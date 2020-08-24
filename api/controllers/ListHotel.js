@@ -227,7 +227,25 @@ const ListHotel = () => {
       });
     }
   };
-  return { getHotelSega, acceptRejectHotel, getHotelDotw };
+  const getCountHotel = async (req, res) => {
+    try {
+      let data = await sequelize.query(
+        `select b.ta as travel_agent,count(case when accept_reject=true then hotel_system_id end) as accept_hotel,count(case when accept_reject=false then hotel_system_id end) as reject_hotel from accept_reject_hotel right join (select unnest(string_to_array('Sega,dotw', ',')) as ta ) as b on lower(b.ta)=lower(travel_agent) group by b.ta
+  `,
+        { type: QueryTypes.SELECT, logging: console.log }
+      );
+
+      return res
+        .status(200)
+        .json({ data, sync: { dotw: 0, sega: 0 }, msg: "Successfully data" });
+    } catch (error) {
+      return res.status(400).json({
+        msg: error.message,
+        error: error,
+      });
+    }
+  };
+  return { getHotelSega, acceptRejectHotel, getHotelDotw, getCountHotel };
 };
 
 module.exports = ListHotel;

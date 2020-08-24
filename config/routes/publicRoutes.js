@@ -92,6 +92,7 @@ const publicRoutes = {
   "PUT /channel/:id": "Channel.editChannel",
   "DELETE /channel/:id": "Channel.deleteChannel",
   "GET /channels": "Channel.getAllChannels",
+  "GET /count_sync_hotel": "ListHotel.getCountHotel",
 };
 
 module.exports = publicRoutes;

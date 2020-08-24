@@ -56,7 +56,7 @@ app.use("/private", mappedAuthRoutes);
 app.use("/swagger", express.static(path.join(__dirname, "../swagger")));
 
 console.log(path.join(__dirname, "../swagger"));
-
+console.log(config.port);
 server.listen(config.port, () => {
   if (
     environment !== "production" &&
