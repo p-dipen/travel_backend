@@ -1,7 +1,7 @@
 const development = {
-  database: 'travel',
+  database: 'travel_admin',
   username: 'postgres',
-  password: '21225',
+  password: 'Admin@123',
   host: 'localhost',
   dialect: 'postgres',
 };

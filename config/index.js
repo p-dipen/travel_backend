@@ -5,7 +5,7 @@ const config = {
   migrate: true,
   privateRoutes,
   publicRoutes,
-  port: process.env.PORT || '2019',
+  port: process.env.PORT || '2020',
 };
 
 module.exports = config;
