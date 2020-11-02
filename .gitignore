@@ -65,3 +65,6 @@ typings/
 
 # sqlite database
 db/database.sqlite
+
+# upload file
+api/public/uploads/

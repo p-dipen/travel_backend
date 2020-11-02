@@ -8,7 +8,7 @@ const tableName = 'getcurrency';
 
 const schema = 'dota';
 
-const Currency = sequelize.define('Currency', {
+const Currency = sequelize.define('GetCurrency', {
   id: {
     type: Sequelize.BIGINT,
     primaryKey: true,
