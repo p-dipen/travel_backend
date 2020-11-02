@@ -2,10 +2,11 @@ const publicRoutes = {
   "GET /state": "SEGAControl.register",
   "GET /pass": "Encrypt.passwordEncrytp",
   "GET /demo": "ResponseApi.alldata",
+  "GET /getdotwinternalcoe": "ResponseApi.alldatadota",
   "POST /hotelsearch": "ResponseApi.searchHotel",
+  "POST /hotelsearchdotw": "ResponseApi.searchHotelDotw",
   "POST /dotalink": "DOTAControl.migratedb",
   "GET /pass": "Encrypt.passwordEncrytp",
-  "GET /demo": "ResponseApi.alldata",
   // User
   "POST /signin": "UserController.login",
   "POST /user": "UserController.register",
@@ -62,10 +63,36 @@ const publicRoutes = {
   "PUT /service/save/:id": "ServicesApi.update",
   "DELETE /service/delete/:id": "ServicesApi.destroy",
 
-  "GET /admin-hotel/get": "AdminHotelApi.get",
-  "POST /admin-hotel/save": "AdminHotelApi.create",
-  "PUT /admin-hotel/save/:id": "AdminHotelApi.update",
-  "DELETE /admin-hotel/delete/:id": "AdminHotelApi.destroy"
+  "GET /admin-hotel/property/get": "AdminHotelApi.getProperty",
+  "GET /admin-hotel/property/get/:hotelId": "AdminHotelApi.getPropertyById",
+  "POST /admin-hotel/property/save": "AdminHotelApi.createProperty",
+  "PUT /admin-hotel/property/save/:hotelId": "AdminHotelApi.updateProperty",
+  "DELETE /admin-hotel/property/delete/:hotelId":
+    "AdminHotelApi.destroyProperty",
+
+  "POST /admin-hotel/facility/assign/:hotelId":
+    "AdminHotelApi.assignFacilities",
+  "POST /admin-hotel/room/save/:hotelId": "AdminHotelApi.saveRoom",
+  "PUT /admin-hotel/room/save/:hotelId/:roomId": "AdminHotelApi.saveRoom",
+  "POST /admin-hotel/room-rate/save/:hotelId/:roomId":
+    "AdminHotelApi.saveRoomRates",
+  "PUT /admin-hotel/room-rate/save/:hotelId/:roomId/:id":
+    "AdminHotelApi.saveRoomRates",
+
+  "POST /admin-hotel/stop-sell/range/:hotelId/:roomId":
+    "AdminHotelApi.stopSalesRange",
+  "POST /admin-hotel/stop-sell/single/:hotelId/:roomId":
+    "AdminHotelApi.stopSales",
+
+  "GET /get-hotel-list": "ListHotel.getHotelSega",
+  "GET /get-hotel-list-dotw": "ListHotel.getHotelDotw",
+  "POST /accept-reject-hotel": "ListHotel.acceptRejectHotel",
+  "POST /channel": "Channel.createChannel",
+  "GET /channel/:id": "Channel.getChannel",
+  "PUT /channel/:id": "Channel.editChannel",
+  "DELETE /channel/:id": "Channel.deleteChannel",
+  "GET /channels": "Channel.getAllChannels",
+  "GET /count_sync_hotel": "ListHotel.getCountHotel",
 };
 
 module.exports = publicRoutes;

@@ -1,49 +1,69 @@
 const RoomFacilitiesModel = require('../models/Master/RoomFacilities');
 const crudService = require('../services/crud.service');
+const { RoomFacilitiesSchemas } = require('../schemas/Master');
 
 const RoomFacilitiesApi = () => {
 
-    const create = async (req, res) => {
-        try {
-            let response = await crudService.insert(RoomFacilitiesModel, req.body);
-            return res.status(200).json({
-                code: 2000,
-                success: true,
-                message: `${response.name} room facility created successfully.`,
-                data: {}
-            });
-        } catch (error) {
-            return res.status(500).json({
-                code: 5000,
-                message: 'Internal server error',
-                error: error,
-            });
-        }
-    };
-
-    const update = async (req, res) => {
-        try {
-            if (req.params.id) {
-                let response = await crudService.update(RoomFacilitiesModel, { id: req.params.id }, req.body);
+    const create = (req, res) => {
+        crudService.validate(req.body, RoomFacilitiesSchemas.save).then(async (reqData) => {
+            try {
+                let response = await crudService.insert(RoomFacilitiesModel, reqData);
                 return res.status(200).json({
                     code: 2000,
                     success: true,
-                    message: `${response} Record(s) of room facility updated successfully.`,
-                    data: {}
+                    message: `${response.name} room facility created successfully.`,
+                    data: response || {}
                 });
-            } else {
-                return res.status(200).json({
-                    code: 4000,
-                    success: false,
-                    message: `Incomplete Data`,
-                    data: {}
+            } catch (error) {
+                return res.status(500).json({
+                    code: 5000,
+                    message: 'Internal server error',
+                    error: error,
                 });
             }
-        } catch (error) {
-            return res.status(500).json({
-                code: 5000,
-                message: 'Internal server error',
-                error: error,
+        }).catch(err => {
+            return res.status(200).json({
+                code: 4002,
+                success: false,
+                message: 'Validation Failed',
+                error: err,
+            });
+        });
+    };
+
+    const update = (req, res) => {
+        if (req.params.id) {
+            crudService.validate(req.body, RoomFacilitiesSchemas.save).then(async (reqData) => {
+                try {
+                    let response = await crudService.update(RoomFacilitiesModel, { id: req.params.id }, reqData);
+                    reqData.id = req.params.id;
+                    return res.status(200).json({
+                        code: 2000,
+                        success: true,
+                        message: `${response} Record(s) of room facility updated successfully.`,
+                        data: reqData || {}
+                    });
+                } catch (error) {
+                    return res.status(500).json({
+                        code: 5000,
+                        message: 'Internal server error',
+                        error: error,
+                    });
+                }
+            }).catch(err => {
+                return res.status(200).json({
+                    code: 4002,
+                    success: false,
+                    message: 'Validation Failed',
+                    error: err,
+                });
+            });
+        } else {
+            return res.status(200).json({
+                code: 4000,
+                success: false,
+                message: `Invalid Url Parameters`,
+                data: {}
             });
         }
     };
@@ -59,7 +79,12 @@ const RoomFacilitiesApi = () => {
                     data: {}
                 });
             } else {
-                return res.status(200).json({ success: false, data: 'Incomplete data' });
+                return res.status(200).json({
+                    code: 4000,
+                    success: false,
+                    message: `Invalid Url Parameters`,
+                    data: {}
+                });
             }
         } catch (error) {
             return res.status(500).json({
