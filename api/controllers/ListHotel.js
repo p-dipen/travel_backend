@@ -164,7 +164,7 @@ const ListHotel = () => {
       console.log("entry in our system ", resp);
       if (body.accept_reject) {
         const url =
-          "https://traveldb.herokuapp.com/public/admin-hotel/property/save";
+          "https://module-hotel-node-api.com/public/admin-hotel/property/save";
         const { hotel_json, travel_agent } = body;
         let obj = {
           name: "",
@@ -261,7 +261,7 @@ const getCityCountry = async (city, country) => {
   let extra = "";
   let flag = true;
   do {
-    let url = `https://traveldb.herokuapp.com/public/${getname}/get${extra}`;
+    let url = `https://module-hotel-node-api.com/public/${getname}/get${extra}`;
     const response = await axios.get(url);
     console.log("citycountry ", response);
     if (response.data && response.data.data.length > 0) {
