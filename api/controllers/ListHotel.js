@@ -196,6 +196,7 @@ const ListHotel = () => {
             hotel_json.town_name,
             hotel_json.state_name
           );
+          console.log(getCityCountryRes);
           obj.country = getCityCountryRes.country_code;
           obj.city = getCityCountryRes.city_code;
           obj.province = getCityCountryRes.province_code;
@@ -203,6 +204,7 @@ const ListHotel = () => {
         }
         console.log("obj ", obj);
         const res = await syncApi().commoncallJson(url, obj, "POST");
+        console.log("response ------------- ", res);
         if (JSON.parse(res).success) {
           console.log("success to update the field");
           let viewId = { view_id: JSON.parse(res).data.id };
