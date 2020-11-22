@@ -273,7 +273,7 @@ const getCityCountry = async (city, country) => {
           getname == "city" ? city : country,
           element.name
         );
-        if (ratio > 80) {
+        if (ratio > 45) {
           console.log(
             ratio,
             getname == "city" ? city : country,
