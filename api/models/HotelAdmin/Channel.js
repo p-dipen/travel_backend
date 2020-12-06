@@ -16,12 +16,20 @@ const Channels = sequelize.define(
     },
     channelName: {
       type: Sequelize.STRING,
+      unique: {
+        args: true,
+        msg: 'Channel Name found to be duplicate.',
+        fields: [sequelize.fn('lower', sequelize.col('channelName'))]
+      }
     },
     apiInfo: {
       type: Sequelize.STRING(1024),
     },
     apiDocLink: {
       type: Sequelize.STRING(512),
+    },
+    status: {
+      type: Sequelize.INTEGER,
     },
     contactName: {
       type: Sequelize.STRING,
