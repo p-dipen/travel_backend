@@ -6,6 +6,13 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 const Email = require("email-templates");
 
+const gmail = require('gmail-send')({
+  user: 'tech.praivit@gmail.com',
+  pass: 'Praivit@gmail@2020',
+  to: 'mithun@aarchik.com',
+  //to: 'mansurishahrukh007@gmail.com',
+});
+
 const environment = process.env;
 const sender = "smtps://" + environment.EMAILID;
 const password = environment.SMTP_USER_PASSWORD;
@@ -35,7 +42,7 @@ const email = new Email({
 });
 
 // nodeMailer.createTransport(sender + ":" + password + "@smtp.push-x.com");
-const sendactivateCode = function(emailaddress, username, name, tokenUrl) {
+const sendactivateCode = function (emailaddress, username, name, tokenUrl) {
   // transporter.template
   try {
     email
@@ -76,8 +83,20 @@ const ViewOption = (transport, hbs) => {
   );
 };
 
+const sendGmail = (subject, body) => {
+  gmail({
+    subject: subject,
+    text: body,
+  }, (error, result, fullResult) => {
+    if (error) console.error(error);
+    console.log(result);
+  })
+};
+
+
 module.exports = {
   SMTPTransport,
   ViewOption,
-  sendactivateCode
+  sendactivateCode,
+  sendGmail,
 };
