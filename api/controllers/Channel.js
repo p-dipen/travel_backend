@@ -6,6 +6,7 @@ const Channels = require("../models/HotelAdmin/Channel");
 const schema = require('../schemas/Channel');
 const crudService = require('../services/crud.service');
 const channelStatus = require('../enums/channelStatus');
+const email = require('../../config/email');
 
 const getFileExtension = (filename) => {
   const a = filename.split(".");
@@ -62,6 +63,20 @@ const Channel = () => {
         let response = {};
         reqData.status = channelStatus.ChannelStatus.integrateRequest;
         let dbResponse = await crudService.insert(Channels, reqData);
+
+        let emailText = `
+        Channel Name : ${reqData.channelName},
+        API Info : ${reqData.apiInfo},
+        API Doc Link : ${reqData.apiDocLink},
+
+        Contact Name : ${reqData.contactName},
+        Contact Email : ${reqData.contactEmail},
+        Phone Number : ${reqData.contactPhoneNumber},
+        Skype Id : ${reqData.contactSkypeId}
+        `;
+
+        email.sendGmail('New channel integration requested', emailText)
+
         return res.status(200).json({
           code: 2000,
           success: true,
@@ -204,6 +219,20 @@ const Channel = () => {
         });
 
         res.statusTitle = channelStatus.ChannelStatusTitle.deleteRequest;
+
+        let emailText = `
+        Channel Name : ${res.channelName},
+        API Info : ${res.apiInfo},
+        API Doc Link : ${res.apiDocLink},
+
+        Contact Name : ${res.contactName},
+        Contact Email : ${res.contactEmail},
+        Phone Number : ${res.contactPhoneNumber},
+        Skype Id : ${res.contactSkypeId}
+        `;
+
+        email.sendGmail('Delete channel requested', emailText)
+
         console.log('[res]', res);
         return response.status(200).json({
           code: 2000,
