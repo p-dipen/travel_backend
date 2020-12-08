@@ -196,6 +196,7 @@ const ListHotel = () => {
             hotel_json.town_name,
             hotel_json.state_name
           );
+          console.log(getCityCountryRes);
           obj.country = getCityCountryRes.country_code;
           obj.city = getCityCountryRes.city_code;
           obj.province = getCityCountryRes.province_code;
@@ -203,6 +204,7 @@ const ListHotel = () => {
         }
         console.log("obj ", obj);
         const res = await syncApi().commoncallJson(url, obj, "POST");
+        console.log("response ------------- ", res);
         if (JSON.parse(res).success) {
           console.log("success to update the field");
           let viewId = { view_id: JSON.parse(res).data.id };
@@ -263,17 +265,21 @@ const getCityCountry = async (city, country) => {
   do {
     let url = `https://module-hotel-node-api.herokuapp.com/public/${getname}/get${extra}`;
     const response = await axios.get(url);
-    console.log("citycountry ", response);
+    // console.log("citycountry ", response);
     if (response.data && response.data.data.length > 0) {
       for (let i = 0; i < response.data.data.length; i++) {
         let element = response.data.data[i];
-        console.log(element);
         let ratio = fuzz.ratio(
           getname == "city" ? city : country,
           element.name
         );
-        console.log(ratio, getname == "city" ? city : country, element.name);
-        if (ratio > 80) {
+        if (ratio > 45) {
+          console.log(
+            ratio,
+            getname == "city" ? city : country,
+            "-----ssytem-----",
+            element.name
+          );
           if (getname == "city") {
             res.city_code = element.id;
             res.country_code = element.countryId;
